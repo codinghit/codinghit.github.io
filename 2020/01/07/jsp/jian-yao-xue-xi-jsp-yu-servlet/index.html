@@ -382,12 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
                             <a href="/tags/JSP/">
                                 <span class="chip bg-color">JSP</span>
+                            </a>
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
                             <a href="/tags/Java%E5%90%8E%E7%AB%AF/">
@@ -424,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.2k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    13 分
                 </div>
                 
 
@@ -507,7 +507,7 @@
 </li>
 <li><code>&lt;jsp:forward page=&quot;相对url的地址&quot;/&gt;</code> 指定要跳转到的页面，该url地址不会改变与重定向区别</li>
 <li><code>&lt;jsp:useBean id=&quot;JavaBean对象的实例名称&quot; class=&quot;JavaBean的完整包名&quot; scope=&quot;指定对象的作用范围&quot;/&gt;</code> 寻找或实例化一个JavaBean<ul>
-<li>属性scope：JavaBean的作用范围<br>page 表示只在当前页面可用<br>request 表示在当前页面和forward方法跳转页上可用<br>session 表示在一个会话被同一个用户的所有页面可用<br>applica 表示被所用用户的所用页面可用</li>
+<li>属性scope：JavaBean的作用范围<br>page 表示只在当前页面可用<br>request 表示在当前页面和forward方法跳转页上可用<br>session 表示在一个会话被同一个用户的所有页面可用<br>application 表示被所用用户的所用页面可用</li>
 </ul>
 </li>
 <li><code>&lt;jsp:setProperty name=&quot;对应于useBean动作中的id&quot; property=&quot;JavaBean中的属性&quot; value=&quot;指定property的值&quot;(param=&quot;请求参数中的参数名,url中问号后面的某个参数&quot;) /&gt;</code> 设置JavaBean的属性，<font size="3" color="#ff0033">注意：value和param中只能有一个或者都没有</font> </li>
@@ -891,6 +891,133 @@ response.addCookie(cookie);//将Cookie保存于客户端
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
+<h4 id="9-数据库访问"><a href="#9-数据库访问" class="headerlink" title="9. 数据库访问"></a>9. 数据库访问</h4><ul>
+<li><p>1.普通的CRUD操作</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> servlet<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServlet<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DatabaseAccess</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//JDBC驱动名及数据库URL</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String JDBC_DRIVER<span class="token operator">=</span><span class="token string">"com.jdbc.mysql.Driver"</span><span class="token punctuation">;</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String DB_URL<span class="token operator">=</span><span class="token string">"jdbc:mysql//localhost:3306/test"</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//数据库的用户名和密码</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String USER <span class="token operator">=</span> <span class="token string">"root"</span><span class="token punctuation">;</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String PASSWORD <span class="token operator">=</span> <span class="token string">"123456"</span><span class="token punctuation">;</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ServletException <span class="token punctuation">{</span>
+      Connection connection <span class="token operator">=</span> null<span class="token punctuation">;</span>
+      Statement statement <span class="token operator">=</span> null<span class="token punctuation">;</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+          Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>JDBC_DRIVER<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//注册JDBC驱动器</span>
+          connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>DB_URL<span class="token punctuation">,</span>USER<span class="token punctuation">,</span>PASSWORD<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//打开一个连接，传入url,用户名，密码</span>
+          statement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          <span class="token comment" spellcheck="true">//查询操作</span>
+          String sql1 <span class="token operator">=</span> <span class="token string">"SELECT name,age FROM students"</span><span class="token punctuation">;</span>
+          ResultSet resultSet <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>sql1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">while</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token comment" spellcheck="true">//取值操作</span>
+              String number <span class="token operator">=</span> resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              String age <span class="token operator">=</span> resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+
+          <span class="token comment" spellcheck="true">//更新操作</span>
+          String sql2 <span class="token operator">=</span> <span class="token string">"UPDATE students SET name='aa' WHERE id=1 "</span><span class="token punctuation">;</span>
+          <span class="token keyword">int</span> i <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>sql2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//i代表修改了几行的数据</span>
+
+          <span class="token comment" spellcheck="true">//删除数据</span>
+          String sql3 <span class="token operator">=</span> <span class="token string">"DELETE FROM students WHERE id=1"</span><span class="token punctuation">;</span>
+          <span class="token keyword">int</span> i1 <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>sql3<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//i1代表删除了几行数据</span>
+
+          <span class="token comment" spellcheck="true">//插入操作，使用PreparedStatement动态参数化查询</span>
+          String sql4 <span class="token operator">=</span> <span class="token string">"INSERT INTO students(name,age) values(?,?)"</span><span class="token punctuation">;</span>
+          PreparedStatement preparedStatement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>sql4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          preparedStatement<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          preparedStatement<span class="token punctuation">.</span><span class="token function">setString</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>req<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">int</span> i2 <span class="token operator">=</span> preparedStatement<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//i2代表添加了几行数据</span>
+
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> <span class="token operator">|</span> SQLException e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>statement<span class="token operator">!=</span>null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                  statement<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>connection <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                  connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>2.事务</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> servlet<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServlet<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DatabaseAccess</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//JDBC驱动名及数据库URL</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String JDBC_DRIVER<span class="token operator">=</span><span class="token string">"com.jdbc.mysql.Driver"</span><span class="token punctuation">;</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String DB_URL<span class="token operator">=</span><span class="token string">"jdbc:mysql//localhost:3306/test"</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//数据库的用户名和密码</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String USER <span class="token operator">=</span> <span class="token string">"root"</span><span class="token punctuation">;</span>
+  <span class="token keyword">static</span> <span class="token keyword">final</span> String PASSWORD <span class="token operator">=</span> <span class="token string">"123456"</span><span class="token punctuation">;</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span>HttpServletRequest req<span class="token punctuation">,</span> HttpServletResponse resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ServletException <span class="token punctuation">{</span>
+      Connection connection <span class="token operator">=</span> null<span class="token punctuation">;</span>
+      Statement statement <span class="token operator">=</span> null<span class="token punctuation">;</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+          Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>JDBC_DRIVER<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//注册JDBC驱动器</span>
+          connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>DB_URL<span class="token punctuation">,</span>USER<span class="token punctuation">,</span>PASSWORD<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//打开一个连接，传入url,用户名，密码</span>
+          statement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          connection<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//设置为不要自动提交</span>
+          String sql1 <span class="token operator">=</span> <span class="token string">"UPDATE1"</span><span class="token punctuation">;</span>
+          String sql2 <span class="token operator">=</span> <span class="token string">"UPDATE2"</span><span class="token punctuation">;</span>
+          statement<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>sql1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          statement<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>sql2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          connection<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//提交以上操作</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> <span class="token operator">|</span> SQLException e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">try</span> <span class="token punctuation">{</span>
+              connection<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//回退</span>
+          <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              e1<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span>statement<span class="token operator">!=</span>null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                  statement<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>connection <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                  connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
 <li><a href="https://www.runoob.com/jsp/jsp-tutorial.html" target="_blank" rel="noopener"> <font color="#3299CC">菜鸟教程|JSP教程</font></a></li>
 <li><a href="https://www.runoob.com/servlet/servlet-tutorial.html" target="_blank" rel="noopener"> <font color="#3299CC">菜鸟教程|Servlet教程</font></a></li>
@@ -959,12 +1086,12 @@ response.addCookie(cookie);//将Cookie保存于客户端
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
                                 <a href="/tags/JSP/">
                                     <span class="chip bg-color">JSP</span>
+                                </a>
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                                 <a href="/tags/Java%E5%90%8E%E7%AB%AF/">
@@ -1434,12 +1561,12 @@ response.addCookie(cookie);//将Cookie保存于客户端
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
                     <a href="/tags/JSP/">
                         <span class="chip bg-color">JSP</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
                     <a href="/tags/Java%E5%90%8E%E7%AB%AF/">
