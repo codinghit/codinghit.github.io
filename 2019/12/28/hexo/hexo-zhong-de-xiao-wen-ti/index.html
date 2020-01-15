@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="手把手教你解决Hexo无法加载本地图片问题, Lzh&#39;s Blog">
-    <meta name="description" content="让Hexo成功加载本地图片">
+    <meta name="keywords" content="Hexo中的小问题, Lzh&#39;s Blog">
+    <meta name="description" content="Hexo-Matery主题">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>手把手教你解决Hexo无法加载本地图片问题 | Lzh&#39;s Blog</title>
+    <title>Hexo中的小问题 | Lzh&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">手把手教你解决Hexo无法加载本地图片问题</h1>
+                    <h1 class="description center-align post-title">Hexo中的小问题</h1>
                 </div>
             </div>
         </div>
@@ -420,7 +420,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    399
+                    480
                 </div>
                 
 
@@ -443,31 +443,36 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="步骤1"><a href="#步骤1" class="headerlink" title="步骤1"></a>步骤1</h2><p>  <strong>安装插件</strong></p>
+                <h2 id="一-Hexo-Matery解决无法加载本地图片"><a href="#一-Hexo-Matery解决无法加载本地图片" class="headerlink" title="一.Hexo-Matery解决无法加载本地图片"></a>一.Hexo-Matery解决无法加载本地图片</h2><h3 id="步骤1"><a href="#步骤1" class="headerlink" title="步骤1"></a>步骤1</h3><p>  <strong>安装插件</strong></p>
 <ul>
 <li>打开Git控制台<br>由于npm速度比较慢，我这里使用的是cnpm淘宝的镜像<br>没有安装的小伙伴，可以使用<strong>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a><br></strong>进行安装<br></li>
 <li>输入<strong>cnpm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> – save</strong></li>
 </ul>
-<h2 id="步骤2"><a href="#步骤2" class="headerlink" title="步骤2"></a>步骤2</h2><p>  <strong>修改主配置文件</strong></p>
+<h3 id="步骤2"><a href="#步骤2" class="headerlink" title="步骤2"></a>步骤2</h3><p>  <strong>修改主配置文件</strong></p>
 <ul>
 <li>找到根目录下面的<b>_config.yml</b>配置文件</li>
-<li>大概在44行的位置左右，找到<b>post_asset_folder</b>将它改为<b>true</b><br><img src="/2019/12/28/hexo/shou-ba-shou-jiao-ni-jie-jue-hexo-wu-fa-jia-zai-ben-di-tu-pian-wen-ti/one.png" alt></li>
+<li>大概在44行的位置左右，找到<b>post_asset_folder</b>将它改为<b>true</b><br><img src="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/one.png" alt></li>
 </ul>
-<h2 id="步骤3"><a href="#步骤3" class="headerlink" title="步骤3"></a>步骤3</h2><p>  <strong>最关键的一步</strong></p>
+<h3 id="步骤3"><a href="#步骤3" class="headerlink" title="步骤3"></a>步骤3</h3><p>  <strong>最关键的一步</strong></p>
 <ul>
 <li>我用VScode来进行演示博客的书写并进行图片的插入，<b>以我写的这篇博客为例</b></li>
-<li>我在<b>source/_posts/Hexo</b>目录下面新建一篇文章目录下面新建一个<font color="#149dc4" size="3">手把手教你解决hexo无法加载本地图片问题.md</font>文件(<font color="#ff0033" size="3">注意:我这里的Hexo目录是我自己建的，大家可以取其他的名字来帮助把自己的博客分类</font>)</li>
-<li>再在<b>source/_posts/Hexo</b>目录下面新建一个<font color="#149dc4" size="3">手把手教你解决hexo无法加载本地图片问题</font>目录.(<font color="#ff0033" size="3">注意:这里的目录名和之前的文章名字必须完全一样</font>)</li>
+<li>我在<b>source/_posts/Hexo</b>目录下面新建一篇文章目录下面新建一个<font color="#149dc4" size="3">Hexo中的小问题.md</font>文件(<font color="#ff0033" size="3">注意:我这里的Hexo目录是我自己建的，大家可以取其他的名字来帮助把自己的博客分类</font>)</li>
+<li>再在<b>source/_posts/Hexo</b>目录下面新建一个<font color="#149dc4" size="3">Hexo中的小问题</font>目录.(<font color="#ff0033" size="3">注意:这里的目录名和之前的文章名字必须完全一样</font>)</li>
 <li>以后这篇文章中的所有图片都放在这个目录下面.</li>
-<li>使用标准的markdown格式引入图片即可，我这里的是<br><b>![](手把手教你解决hexo无法加载本地图片问题/two.png)</b></li>
-<li>以下为我这篇文章的目录树<br><img src="/2019/12/28/hexo/shou-ba-shou-jiao-ni-jie-jue-hexo-wu-fa-jia-zai-ben-di-tu-pian-wen-ti/two.png" alt></li>
+<li>使用标准的markdown格式引入图片即可，我这里的是<br><b>![](Hexo中的小问题/two.png)</b></li>
+<li>以下为我这篇文章的目录树<br><img src="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/two.png" alt></li>
 </ul>
-<h2 id="步骤4"><a href="#步骤4" class="headerlink" title="步骤4"></a>步骤4</h2><p>  <strong>重新生成博客</strong></p>
+<h3 id="步骤4"><a href="#步骤4" class="headerlink" title="步骤4"></a>步骤4</h3><p>  <strong>重新生成博客</strong></p>
 <ul>
 <li>切换到自己博客的根目录下面</li>
 <li>使用命令重新部署<b>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</b></li>
 </ul>
-<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2>
+<h2 id="二、Hexo-Matery打开评论功能"><a href="#二、Hexo-Matery打开评论功能" class="headerlink" title="二、Hexo-Matery打开评论功能"></a>二、Hexo-Matery打开评论功能</h2><h3 id="步骤1-1"><a href="#步骤1-1" class="headerlink" title="步骤1"></a>步骤1</h3><p>   打开<a href="https://www.leancloud.cn/" target="_blank" rel="noopener">Leancloud</a>官网进行注册，需要实名认证，默认会扫支付宝进行认证，速度很快。</p>
+<h3 id="步骤2-1"><a href="#步骤2-1" class="headerlink" title="步骤2"></a>步骤2</h3><p>   找到<strong>创建应用</strong>点击创建<br><br>  <img src="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/one_one.png" alt></p>
+<h3 id="步骤3-1"><a href="#步骤3-1" class="headerlink" title="步骤3"></a>步骤3</h3><p>   点击<strong>齿轮</strong><br>   <img src="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/two_two.png" alt></p>
+<h3 id="步骤4-1"><a href="#步骤4-1" class="headerlink" title="步骤4"></a>步骤4</h3><p>   点击<strong>应用Key</strong><br>   <img src="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/three.png" alt></p>
+<h3 id="步骤5"><a href="#步骤5" class="headerlink" title="步骤5"></a>步骤5</h3><p>   找到主题下<strong>_config.yml</strong>配置文件进行修改,大约在303行的位置,修改如图，把<strong>false</strong>改为<strong>true</strong><br>   <img src="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/four.png" alt></p>
+<h3 id="完成配置"><a href="#完成配置" class="headerlink" title="完成配置"></a>完成配置</h3>
             </div>
             <hr/>
 
@@ -492,7 +497,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.codezhuang.top/2019/12/28/hexo/shou-ba-shou-jiao-ni-jie-jue-hexo-wu-fa-jia-zai-ben-di-tu-pian-wen-ti/">http://www.codezhuang.top/2019/12/28/hexo/shou-ba-shou-jiao-ni-jie-jue-hexo-wu-fa-jia-zai-ben-di-tu-pian-wen-ti/</a>
+                    <a href="http://www.codezhuang.top/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/">http://www.codezhuang.top/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1011,27 +1016,27 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/27/hexo/matery-zui-jian-dan-pei-zhi-ping-lun-gong-neng/">
+                <a href="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="绝对成功的Matery主题评论配置">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Hexo中的小问题">
                         
-                        <span class="card-title">绝对成功的Matery主题评论配置</span>
+                        <span class="card-title">Hexo中的小问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用valine进行评论配置
+                            Hexo-Matery主题
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-28
                             </span>
                         <span class="publish-author">
                             
@@ -1045,6 +1050,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
