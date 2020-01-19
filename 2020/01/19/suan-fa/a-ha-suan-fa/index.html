@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java变量的默认值, Lzh&#39;s Blog">
-    <meta name="description" content="Java全局、静态、局部变量的默认值">
+    <meta name="keywords" content="啊哈算法, Lzh&#39;s Blog">
+    <meta name="description" content="读书总结">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java变量的默认值 | Lzh&#39;s Blog</title>
+    <title>啊哈算法 | Lzh&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java变量的默认值</h1>
+                    <h1 class="description center-align post-title">啊哈算法</h1>
                 </div>
             </div>
         </div>
@@ -382,6 +382,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
                             <a href="/tags/java/">
                                 <span class="chip bg-color">java</span>
                             </a>
@@ -394,8 +398,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/java/" class="post-category">
-                                java
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -407,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-14
+                    2020-01-19
                 </div>
                 
 
@@ -416,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    7
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -439,153 +443,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="１．静态变量"><a href="#１．静态变量" class="headerlink" title="１．静态变量"></a>１．静态变量</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GlobalVar</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">char</span> aChar<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> anInt<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">long</span> aLong<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">float</span> aFloat<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">double</span> aDouble<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> String string<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ints<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量char默认值:"</span><span class="token operator">+</span>aChar<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量int默认值:"</span><span class="token operator">+</span>anInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量long默认值:"</span><span class="token operator">+</span>aLong<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量float默认值:"</span><span class="token operator">+</span>aFloat<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量double默认值:"</span><span class="token operator">+</span>aDouble<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量string默认值:"</span><span class="token operator">+</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量ints默认值:"</span><span class="token operator">+</span>ints<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>aChar <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量char默认值为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"全局变量char默认值不为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java">全局变量<span class="token keyword">char</span>默认值<span class="token operator">:</span> 
-全局变量<span class="token keyword">int</span>默认值<span class="token operator">:</span><span class="token number">0</span>
-全局变量<span class="token keyword">long</span>默认值<span class="token operator">:</span><span class="token number">0</span>
-全局变量<span class="token keyword">float</span>默认值<span class="token operator">:</span><span class="token number">0.0</span>
-全局变量<span class="token keyword">double</span>默认值<span class="token operator">:</span><span class="token number">0.0</span>
-全局变量string默认值<span class="token operator">:</span>null
-全局变量ints默认值<span class="token operator">:</span>null
-全局变量<span class="token keyword">char</span>默认值为空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2-成员变量"><a href="#2-成员变量" class="headerlink" title="2.成员变量"></a>2.成员变量</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MembereVar</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">char</span> aChar<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span> anInt<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">long</span> aLong<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">float</span> aFloat<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">double</span> aDouble<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> String string<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ints<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        MembereVar membereVar <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MembereVar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量char默认值:"</span><span class="token operator">+</span>membereVar<span class="token punctuation">.</span>aChar<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量int默认值:"</span><span class="token operator">+</span>membereVar<span class="token punctuation">.</span>anInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量long默认值:"</span><span class="token operator">+</span>membereVar<span class="token punctuation">.</span>aLong<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量float默认值:"</span><span class="token operator">+</span>membereVar<span class="token punctuation">.</span>aFloat<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量double默认值:"</span><span class="token operator">+</span>membereVar<span class="token punctuation">.</span>aDouble<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量string默认值:"</span><span class="token operator">+</span>membereVar<span class="token punctuation">.</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量ints默认值:"</span><span class="token operator">+</span>membereVar<span class="token punctuation">.</span>ints<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>membereVar<span class="token punctuation">.</span>aChar <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量char默认值为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量char默认值不为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java">成员变量<span class="token keyword">char</span>默认值<span class="token operator">:</span> 
-成员变量<span class="token keyword">int</span>默认值<span class="token operator">:</span><span class="token number">0</span>
-成员变量<span class="token keyword">long</span>默认值<span class="token operator">:</span><span class="token number">0</span>
-成员变量<span class="token keyword">float</span>默认值<span class="token operator">:</span><span class="token number">0.0</span>
-成员变量<span class="token keyword">double</span>默认值<span class="token operator">:</span><span class="token number">0.0</span>
-成员变量string默认值<span class="token operator">:</span>null
-成员变量ints默认值<span class="token operator">:</span>null
-成员变量<span class="token keyword">char</span>默认值为空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>结论:</strong></p>
-<ul>
-<li><p>静态变量和成员变量的默认值是一样的</p>
-</li>
-<li><p>基本数据类型: int = 0, long =0, float = 0.0, double = 0.0</p>
-</li>
-<li><p>对象数据类型: 默认值都为null </p>
-<p><font color="#ff0033" size="4">注意: char这个基本数据类型</font></p>
-</li>
-<li><p>char的默认字符是空, 类似于两个单引号中没有任何字符, 但是在代码中<br>是不能给字符串赋值为’’(如 char ch = ‘’), 如果这样写编译会报错, 因此我们就<br>不能通过   <em>if(ch == ‘’)</em> 这种形式判断, 这种形式同样会报错.</p>
-</li>
-<li><p>当我们想要判断char字符是不是被人为的赋值, 我们可以这样写:</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">if</span><span class="token punctuation">(</span>aChar <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量char默认值为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
-  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"成员变量char默认值不为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>根据char是否为0进行判断:<br>如果为true, 则char没有被人为赋值, 是系统的默认值<br>如果为false, 则char已经被人为赋值.</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-局部变量"><a href="#3-局部变量" class="headerlink" title="3.局部变量"></a>3.局部变量</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LocalVar</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">char</span> aChar <span class="token punctuation">;</span>
-        <span class="token keyword">int</span> anInt<span class="token punctuation">;</span>
-        <span class="token keyword">long</span> aLong<span class="token punctuation">;</span>
-        <span class="token keyword">float</span> aFloat<span class="token punctuation">;</span>
-        <span class="token keyword">double</span> aDouble<span class="token punctuation">;</span>
-        String string<span class="token punctuation">;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ints<span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"局部变量char默认值:"</span><span class="token operator">+</span>aChar<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"局部变量int默认值:"</span><span class="token operator">+</span>anInt<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"局部变量long默认值:"</span><span class="token operator">+</span>aLong<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"局部变量float默认值:"</span><span class="token operator">+</span>aFloat<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"局部变量double默认值:"</span><span class="token operator">+</span>aDouble<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"局部变量string默认值:"</span><span class="token operator">+</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"局部变量ints默认值:"</span><span class="token operator">+</span>ints<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java">Error<span class="token operator">:</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">)</span> java<span class="token operator">:</span> 可能尚未初始化变量aChar
-Error<span class="token operator">:</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span> java<span class="token operator">:</span> 可能尚未初始化变量anInt
-Error<span class="token operator">:</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">)</span> java<span class="token operator">:</span> 可能尚未初始化变量aLong
-Error<span class="token operator">:</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">44</span><span class="token punctuation">)</span> java<span class="token operator">:</span> 可能尚未初始化变量aFloat
-Error<span class="token operator">:</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">)</span> java<span class="token operator">:</span> 可能尚未初始化变量aDouble
-Error<span class="token operator">:</span><span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">45</span><span class="token punctuation">)</span> java<span class="token operator">:</span> 可能尚未初始化变量string
-Error<span class="token operator">:</span><span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">)</span> java<span class="token operator">:</span> 可能尚未初始化变量ints<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>结论:</strong></p>
-<ul>
-<li>局部变量系统默认不会给你默认值, 如果想要使用局部变量则必须进行初始化.</li>
-</ul>
-<p><font color="#ff0033" size="4">注意: 局部变量的数组new了之后就又有默认值. </font></p>
-<ul>
-<li>局部变量中的基本数组类型new之后的默认值和成员变量(也可以说是静态变量)的默认值是相同.(请看下图)</li>
-</ul>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LocalVar</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ints<span class="token punctuation">;</span>
-        ints <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>ints<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">float</span><span class="token punctuation">[</span><span class="token punctuation">]</span> floats<span class="token punctuation">;</span>
-        floats <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">float</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>floats<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> doubles<span class="token punctuation">;</span>
-        doubles <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">double</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>doubles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  
-<span class="token number">0.0</span>  <span class="token number">0.0</span>  <span class="token number">0.0</span>  <span class="token number">0.0</span>  <span class="token number">0.0</span>  
-<span class="token number">0.0</span>  <span class="token number">0.0</span>  <span class="token number">0.0</span>  <span class="token number">0.0</span>  <span class="token number">0.0</span>  
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                <h3 id="一-排序"><a href="#一-排序" class="headerlink" title="一. 排序"></a>一. 排序</h3><h4 id="1-桶排序"><a href="#1-桶排序" class="headerlink" title="1.桶排序"></a>1.桶排序</h4><pre class="line-numbers language-java"><code class="language-java"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -611,7 +469,7 @@ Error<span class="token operator">:</span><span class="token punctuation">(</spa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.codezhuang.top/2019/12/14/java/java-bian-liang-mo-ren-zhi/">http://www.codezhuang.top/2019/12/14/java/java-bian-liang-mo-ren-zhi/</a>
+                    <a href="http://www.codezhuang.top/2020/01/19/suan-fa/a-ha-suan-fa/">http://www.codezhuang.top/2020/01/19/suan-fa/a-ha-suan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -648,6 +506,10 @@ Error<span class="token operator">:</span><span class="token punctuation">(</spa
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
                             
                                 <a href="/tags/java/">
                                     <span class="chip bg-color">java</span>
@@ -1076,49 +938,51 @@ Error<span class="token operator">:</span><span class="token punctuation">(</spa
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/">
+                <a href="/2020/01/19/suan-fa/a-ha-suan-fa/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Hexo中的小问题">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="啊哈算法">
                         
-                        <span class="card-title">Hexo中的小问题</span>
+                        <span class="card-title">啊哈算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hexo-Matery主题
+                            读书总结
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
                 </div>
@@ -1129,26 +993,26 @@ Error<span class="token operator">:</span><span class="token punctuation">(</spa
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/14/java/java-bian-liang-mo-ren-zhi/">
+                <a href="/2020/01/14/java/java-nei-bu-lei/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Java变量的默认值">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Java内部类">
                         
-                        <span class="card-title">Java变量的默认值</span>
+                        <span class="card-title">Java内部类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java全局、静态、局部变量的默认值
+                            踩过的内部类中的"坑"
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-14
                             </span>
                         <span class="publish-author">
                             
@@ -1162,7 +1026,6 @@ Error<span class="token operator">:</span><span class="token punctuation">(</spa
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
