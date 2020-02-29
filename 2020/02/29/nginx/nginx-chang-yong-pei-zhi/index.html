@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringCloud初体验, Lzh&#39;s Blog">
-    <meta name="description" content="微服务入门">
+    <meta name="keywords" content="Nginx常用配置, Lzh&#39;s Blog">
+    <meta name="description" content="Nginx以低内存、高并发被广泛的运用，简单总结下常用配置">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>SpringCloud初体验 | Lzh&#39;s Blog</title>
+    <title>Nginx常用配置 | Lzh&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/2_5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/2_11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SpringCloud初体验</h1>
+                    <h1 class="description center-align post-title">Nginx常用配置</h1>
                 </div>
             </div>
         </div>
@@ -382,16 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
+                            <a href="/tags/Nginx/">
+                                <span class="chip bg-color">Nginx</span>
                             </a>
                         
-                            <a href="/tags/SpringCloud/">
-                                <span class="chip bg-color">SpringCloud</span>
-                            </a>
-                        
-                            <a href="/tags/Spring/">
-                                <span class="chip bg-color">Spring</span>
+                            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                                <span class="chip bg-color">服务器</span>
                             </a>
                         
                     </div>
@@ -402,8 +398,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/SpringCloud/" class="post-category">
-                                SpringCloud
+                            <a href="/categories/Nginx/" class="post-category">
+                                Nginx
                             </a>
                         
                     </div>
@@ -415,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-02
+                    2020-02-29
                 </div>
                 
 
@@ -424,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    977
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    4 分
                 </div>
                 
 
@@ -447,59 +443,127 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SpringCloud初体验"><a href="#SpringCloud初体验" class="headerlink" title="SpringCloud初体验"></a>SpringCloud初体验</h1><h2 id="一-微服务简介"><a href="#一-微服务简介" class="headerlink" title="一. 微服务简介"></a>一. 微服务简介</h2><h3 id="1-微服务概述"><a href="#1-微服务概述" class="headerlink" title="1. 微服务概述"></a>1. 微服务概述</h3><p>微服务的核心就是将传统的一站式应用，根据业务拆分成一个一个的服务，彻底地去耦合，每一个微服务提供单个业务功能的服务，一个服务做一件事。从技术角度看就是一种小而独立的处理过程，类似进程概念，能够自行单独启动或销毁，拥有自己的数据库。</p>
-<h3 id="2-微服务与微服务架构区别"><a href="#2-微服务与微服务架构区别" class="headerlink" title="2. 微服务与微服务架构区别"></a>2. 微服务与微服务架构区别</h3><ul>
-<li><strong>微服务：</strong>强调的是服务的大小，它关注的是某一个点，是具体解决某一个问题/提供落地对应服务的一个服务应用,<br>狭意的看,可以看作IDEA里面的一个个微服务工程/或者Module</li>
-<li><strong>微服务架构：</strong>微服务架构是⼀种架构模式，它提倡将单⼀应⽤程序划分成⼀组⼩的服务，服务之间互相协调、互相配合，为⽤户提供最终价值。每个服务运⾏在其独⽴的进程中，服务与服务间采⽤轻量级的通信机制互相协作（通常是基于HTTP协议的RESTful API）。每个服务都围绕着具体业务进⾏构建，并且能够被独⽴的部署到⽣产环境、类⽣产环境等。另外，应当尽量避免统⼀的、集中式的服务管理机制，对具体的⼀个服务⽽⾔，应根据业务上下⽂，选择合适的语⾔、⼯具对其进⾏构建。</li>
+                <h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="一-Nginx的常用用途"><a href="#一-Nginx的常用用途" class="headerlink" title="一. Nginx的常用用途"></a>一. Nginx的常用用途</h2><ul>
+<li><strong>反向代理</strong></li>
+<li><strong>负载均衡</strong></li>
+<li><strong>动静分离</strong></li>
+<li><strong>高可用集群</strong></li>
 </ul>
-<h2 id="二-SpringCloud简介"><a href="#二-SpringCloud简介" class="headerlink" title="二. SpringCloud简介"></a>二. SpringCloud简介</h2><h3 id="1-SpringCloud概述"><a href="#1-SpringCloud概述" class="headerlink" title="1. SpringCloud概述"></a>1. SpringCloud概述</h3><p>SpringCloud，基于SpringBoot提供了一套微服务解决方案，包括服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件，除了基于NetFlix的开源组件做高度抽象封装之外，还有一些选型中立的开源组件.SpringCloud=分布式微服务架构下的一站式解决方案，是各个微服务架构落地技术的集合体，俗称微服务全家桶。</p>
-<h3 id="2-SpringCloud与Dubbo区别"><a href="#2-SpringCloud与Dubbo区别" class="headerlink" title="2. SpringCloud与Dubbo区别"></a>2. SpringCloud与Dubbo区别</h3><p>Dubbo的定位始终是一款RPC框架，而SpringCloud的目标是微服务架构下的一站式解决方案。<br><font color="red">最大区别：SpringCloud抛弃了Dubbo的RPC通信，采用的是基于HTTP的REST方式。</font></p>
-<h2 id="三-EureKa服务发现与注册"><a href="#三-EureKa服务发现与注册" class="headerlink" title="三. EureKa服务发现与注册"></a>三. EureKa服务发现与注册</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>Eureka是一个基于REST的服务，用于定位服务，以实现云端中间层服务发现和故障转移。服务注册与发现对于微服务架构来说是非常重要的，有了服务发现与注册，只需要使用服务的标识符，就可以访问到服务，而不需要修改服务调用的配置文件了。功能类似于dubbo的注册中心，比如Zookeeper。</p>
-<h3 id="2-基本架构"><a href="#2-基本架构" class="headerlink" title="2. 基本架构"></a>2. 基本架构</h3><p><font color="blue">Eureka包含两个组件：Eureka Server和Eureka Client</font><br><strong>Eureka Server提供服务注册服务:</strong><br>各个节点启动后，会在EurekaServer中进行注册，这样EurekaServer中的服务注册表中将会存储所有可用服务节点的信息，服务节点的信息可以在界面中直观的看到。<br><strong>Eureka Client: </strong>EurekaClient是一个Java客户端，用于简化Eureka Server的交互，客户端同时也具备一个内置的、使用轮询(round-robin)负载算法的负载均衡器。在应用启动后，将会向Eureka Server发送心跳(默认周期为30秒)。如果Eureka Server在多个心跳周期内没有接收到某个节点的心跳，EurekaServer将会从服务注册表中把这个服务节点移除（默认90秒）</p>
-<h3 id="3-Eureka自我保护"><a href="#3-Eureka自我保护" class="headerlink" title="3. Eureka自我保护"></a>3. Eureka自我保护</h3><p>默认情况下，如果EurekaServer在一定时间内没有接收到某个微服务实例的心跳，EurekaServer将会注销该实例（默认90秒）。但是当网络分区故障发生时，微服务与EurekaServer之间无法正常通信，以上行为可能变得非常危险了——因为微服务本身其实是健康的，<font color="red">此时本不应该注销这个微服务。</font>Eureka通过“自我保护模式”来解决这个问题——当EurekaServer节点在短时间内丢失过多客户端时（可能发生了网络分区故障），那么这个节点就会进入自我保护模式。一旦进入该模式，EurekaServer就会保护服务注册表中的信息，不再删除服务注册表中的数据（也就是不会注销任何微服务）。当网络故障恢复后，该Eureka Server节点会自动退出自我保护模式。<br><font color="red">在自我保护模式中，Eureka Server会保护服务注册表中的信息，不再注销任何服务实例。当它收到的心跳数重新恢复到阈值以上时，该Eureka Server节点就会自动退出自我保护模式。它的设计哲学就是宁可保留错误的服务注册信息，也不盲目注销任何可能健康的服务实例。一句话讲解：好死不如赖活着</font><br><font color="blue">综上，自我保护模式是一种应对网络异常的安全保护措施。它的架构哲学是宁可同时保留所有微服务（健康的微服务和不健康的微服务都会保留），也不盲目注销任何健康的微服务。使用自我保护模式，可以让Eureka集群更加的健壮、稳定。</font></p>
-<p>在Spring Cloud中，可以使用eureka.server.enable-self-preservation = false 禁用自我保护模式。</p>
-<h3 id="4-Eureka集群"><a href="#4-Eureka集群" class="headerlink" title="4. Eureka集群"></a>4. Eureka集群</h3><p><img src="/2020/02/02/springcloud/springcloud-chu-ti-yan/%E9%9B%86%E7%BE%A4.png" alt><br>基本原理<br>上图是来自eureka的官方架构图，这是基于集群配置的eureka； </p>
-<ul>
-<li>处于不同节点的eureka通过Replicate进行数据同步 </li>
-<li>Application Service为服务提供者 </li>
-<li>Application Client为服务消费者 </li>
-<li>Make Remote Call完成一次服务调用</li>
-</ul>
-<p>服务启动后向Eureka注册，Eureka Server会将注册信息向其他Eureka Server进行同步，当服务消费者要调用服务提供者，则向服务注册中心获取服务提供者地址，然后会将服务提供者地址缓存在本地，下次再调用时，则直接从本地缓存中取，完成一次调用。</p>
-<p>当服务注册中心Eureka Server检测到服务提供者因为宕机、网络原因不可用时，则在服务注册中心将服务置为DOWN状态，并把当前服务提供者状态向订阅者发布，订阅过的服务消费者更新本地缓存。</p>
-<p>服务提供者在启动后，周期性（默认30秒）向Eureka Server发送心跳，以证明当前服务是可用状态。Eureka Server在一定的时间（默认90秒）未收到客户端的心跳，则认为服务宕机，注销该实例。</p>
-<h3 id="5-Eureka与Zookeeper比较"><a href="#5-Eureka与Zookeeper比较" class="headerlink" title="5. Eureka与Zookeeper比较"></a>5. Eureka与Zookeeper比较</h3><ul>
-<li>CAP原则又称CAP定理，指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可兼得</li>
-</ul>
-<p>著名的CAP理论指出，一个分布式系统不可能同时满足C(一致性)、A(可用性)和P(分区容错性)。由于分区容错性P在是分布式系统中必须要保证的，因此我们只能在A和C之间进行权衡。<br><font color="blue">Zookeeper保证的是CP,Eureka则是AP。</font></p>
-<p><strong> Zookeeper保证CP:</strong>当向注册中心查询服务列表时，我们可以容忍注册中心返回的是几分钟以前的注册信息，但不能接受服务直接down掉不可用。也就是说，服务注册功能对可用性的要求要高于一致性。但是zk会出现这样一种情况，当master节点因为网络故障与其他节点失去联系时，剩余节点会重新进行leader选举。问题在于，选举leader的时间太长，30 ~ 120s, 且选举期间整个zk集群都是不可用的，这就导致在选举期间注册服务瘫痪。在云部署的环境下，因网络问题使得zk集群失去master节点是较大概率会发生的事，虽然服务能够最终恢复，但是漫长的选举时间导致的注册长期不可用是不能容忍的。<br><strong>Eureka保证AP:</strong>Eureka看明白了这一点，因此在设计时就优先保证可用性。Eureka各个节点都是平等的，几个节点挂掉不会影响正常节点的工作，剩余的节点依然可以提供注册和查询服务。而Eureka的客户端在向某个Eureka注册或时如果发现连接失败，则会自动切换至其它节点，只要有一台Eureka还在，就能保证注册服务可用(保证可用性)，只不过查到的信息可能不是最新的(不保证强一致性)。除此之外，Eureka还有一种自我保护机制，如果在15分钟内超过85%的节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障，此时会出现以下几种情况： </p>
+<h2 id="二-Nginx在Linux的配置"><a href="#二-Nginx在Linux的配置" class="headerlink" title="二. Nginx在Linux的配置"></a>二. Nginx在Linux的配置</h2><h3 id="1-安装Nginx"><a href="#1-安装Nginx" class="headerlink" title="1. 安装Nginx"></a>1. 安装Nginx</h3><h4 id="1-1-yum安装"><a href="#1-1-yum安装" class="headerlink" title="1.1 yum安装"></a>1.1 yum安装</h4><p>Linux以Centos7为例：默认情况Centos7中无Nginx的源。</p>
 <ol>
-<li>Eureka不再从注册列表中移除因为长时间没收到心跳而应该过期的服务 </li>
-<li>Eureka仍然能够接受新服务的注册和查询请求，但是不会被同步到其它节点上(即保证当前节点依然可用) </li>
-<li>当网络稳定时，当前实例新的注册信息会被同步到其它节点中</li>
+<li><p>首先需要添加源：</p>
+<pre><code>rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</code></pre></li>
+<li><p>安装Nginx</p>
+<pre><code>yum -y install nginx </code></pre><p>此时的配置文件在/etc/nginx目录下。</p>
+</li>
+<li><p>常用命令 </p>
+<pre><code>systemctl enable nginx # 设置开机启动 
+service nginx start # 启动nginx服务
+service nginx stop # 停止nginx服务
+service nginx restart # 重启nginx服务
+service nginx reload # 重新加载配置，一般是在修改过nginx配置文件时使用。</code></pre></li>
 </ol>
-<p><font size="3" color="red">因此， Eureka可以很好的应对因网络故障导致部分节点失去联系的情况，而不会像zookeeper那样使整个注册服务瘫痪。</font></p>
-<h2 id="四-Ribbon负载均衡"><a href="#四-Ribbon负载均衡" class="headerlink" title="四. Ribbon负载均衡"></a>四. Ribbon负载均衡</h2><h3 id="1-概述-1"><a href="#1-概述-1" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>Spring Cloud Ribbon是基于Netflix Ribbon实现的一套<font size="3" color="red">客户端负载均衡的工具。</font><br>简单的说，Ribbon是Netflix发布的开源项目，主要功能是提供客户端的软件负载均衡算法，将Netflix的中间层服务连接在一起。Ribbon客户端组件提供一系列完善的配置项如连接超时，重试等。简单的说，就是在配置文件中列出Load Balancer（简称LB）后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。我们也很容易使用Ribbon实现自定义的负载均衡算法。</p>
-<ul>
-<li>负载均衡：LB，即负载均衡(Load Balance)，在微服务或分布式集群中经常用的一种应用。<br>负载均衡简单的说就是将用户的请求平摊的分配到多个服务上，从而达到系统的HA。<br>常见的负载均衡有软件Nginx，LVS，硬件 F5等。<br>相应的在中间件，例如：dubbo和SpringCloud中均给我们提供了负载均衡，SpringCloud的负载均衡算法可以自定义。 <ul>
-<li><b>集中式LB：</b>即在服务的消费方和提供方之间使用独立的LB设施(可以是硬件，如F5, 也可以是软件，如nginx), 由该设施负责把访问请求通过某种策略转发至服务的提供方；</li>
-<li><b>进程内LB：</b>将LB逻辑集成到消费方，消费方从服务注册中心获知有哪些地址可用，然后自己再从这些地址中选择出一个合适的服务器。<font color="red">Ribbon就属于进程内LB，</font>它只是一个类库，集成于消费方进程，消费方通过它来获取到服务提供方的地址。</li>
+<h4 id="1-2-源码包安装"><a href="#1-2-源码包安装" class="headerlink" title="1.2 源码包安装"></a>1.2 源码包安装</h4><ol>
+<li><p>安装相应的依赖</p>
+<pre><code>yum -y install make pcre pcre-devel gcc gcc-c++ zlib zlib-devel openssl openssl-devel</code></pre></li>
+<li><p>首先下载好Nginx后缀名为*.tag.gz的文件放在/usr/src目录下，然后进行解压、编译和安装</p>
+<pre><code>tar -zxvf nginx-1.12.2.tar.gz #解压
+cd nginx-1.12.2 #进入目录
+./configure 
+make #编译
+make install #安装</code></pre><blockquote>
+<p>注意:<br>此时会在local目录下生产一个nginx目录<br>配置文件是在/usr/local/nginx/conf/nginx.conf</p>
+</blockquote>
+</li>
+<li><p>常用命令</p>
+<pre><code>cd /usr/local/nginx/sbin/nginx
+./nginx #启动nginx
+./nginx -s stop #停止nginx
+./nginx -s reload #重新载入配置文件
+./nginx -s reopen #重启nginx</code></pre></li>
+</ol>
+<h3 id="2-设置Linux中防火墙开放的端口"><a href="#2-设置Linux中防火墙开放的端口" class="headerlink" title="2. 设置Linux中防火墙开放的端口"></a>2. 设置Linux中防火墙开放的端口</h3><ul>
+<li>查看开放的端口<pre><code>firewall-cmd --list-all</code></pre></li>
+<li>设置开放的端口号<pre><code>firewall-cmd --add-service=http --permanent
+firewall-cmd --add-port=80/tcp --permanent</code></pre></li>
+<li>重启防火墙<pre><code>firewall-cmd --reload</code></pre></li>
+</ul>
+<h3 id="3-Nginx配置反向代理"><a href="#3-Nginx配置反向代理" class="headerlink" title="3. Nginx配置反向代理"></a>3. Nginx配置反向代理</h3><ul>
+<li>默认在Linux中安装了Tomcat服务器端口为8080，当访问Nginx时，实际上访问的是Tomcat服务器。</li>
+<li>修改nginx.conf的配置文件，server_name改为linux上的ip地址，在location中添加proxy_pass。<br><img src="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/1.png" alt></li>
+</ul>
+<h3 id="4-Nginx配置负载均衡"><a href="#4-Nginx配置负载均衡" class="headerlink" title="4. Nginx配置负载均衡"></a>4. Nginx配置负载均衡</h3><ul>
+<li>默认在Linux中准备两台Tomcat服务器，一台端口为8080，一台端口为8081。</li>
+<li>修改nginx.conf配置文件，添加upstream myserver，在location中添加proxy_pass。<br><img src="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/2.png" alt></li>
+<li>负载均衡的几种分配方式：<ul>
+<li><strong>轮询(默认)：</strong> 每个请求按时间顺序逐一分配到不同的服务器</li>
+<li><strong>weight:</strong> 区中越高被分配的客户端越高<br><img src="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/3.png" alt></li>
+<li><strong>ip_hash:</strong> 每个请求按访问ip的hash结果进行分配，这样每个访客基本上可以固定访问一个后端服务器<br><img src="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/4.png" alt></li>
+<li><strong>fair(第三方)：</strong> 按后端服务器的响应时间来分配请求，响应时间短的优先分配<br><img src="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/5.png" alt></li>
 </ul>
 </li>
 </ul>
-<h2 id="五-Feign负载均衡"><a href="#五-Feign负载均衡" class="headerlink" title="五. Feign负载均衡"></a>五. Feign负载均衡</h2><h3 id="1-概述-2"><a href="#1-概述-2" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>Feign是一个声明式的Web服务客户端，使得编写Web服务客户端变得非常容易，只需要创建一个接口，然后在上面添加注解即可。<br><font color="blue">Feign能干什么</font><br>Feign旨在使编写Java Http客户端变得更容易。<br>前面在使用Ribbon+RestTemplate时，利用RestTemplate对http请求的封装处理，形成了一套模版化的调用方法。但是在实际开发中，由于对服务依赖的调用可能不止一处，往往一个接口会被多处调用，所以通常都会针对每个微服务自行封装一些客户端类来包装这些依赖服务的调用。所以，Feign在此基础上做了进一步封装，由他来帮助我们定义和实现依赖服务接口的定义。在Feign的实现下，我们只需创建一个接口并使用注解的方式来配置它(以前是Dao接口上面标注Mapper注解,现在是一个微服务接口上面标注一个Feign注解即可)，即可完成对服务提供方的接口绑定，简化了使用Spring cloud Ribbon时，自动封装服务调用客户端的开发量。</p>
-<p><font color="blue">Feign集成了Ribbon</font><br>利用Ribbon维护了MicroServiceCloud-Dept的服务列表信息，并且通过轮询实现了客户端的负载均衡。而与Ribbon不同的是，通过feign只需要定义服务绑定接口且以声明式的方法，优雅而简单的实现了服务调用</p>
-<h2 id="六-Hystrix断路器"><a href="#六-Hystrix断路器" class="headerlink" title="六. Hystrix断路器"></a>六. Hystrix断路器</h2><h3 id="1-概述-3"><a href="#1-概述-3" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>Hystrix是一个用于处理分布式系统的<font color="red">延迟</font>和<font color="red">容错</font>的开源库，在分布式系统里，许多依赖不可避免的会调用失败，比如超时、异常等，Hystrix能够保证在一个依赖出问题的情况下，<font color="red">不会导致整体服务失败，避免级联故障，以提高分布式系统的弹性。</font></p>
-<p>“断路器”本身是一种开关装置，当某个服务单元发生故障之后，通过断路器的故障监控（类似熔断保险丝），<font color="red">向调用方返回一个符合预期的、可处理的备选响应（FallBack），而不是长时间的等待或者抛出调用方无法处理的异常，</font>这样就保证了服务调用方的线程不会被长时间、不必要地占用，从而避免了故障在分布式系统中的蔓延，乃至雪崩。</p>
-<h3 id="2-服务熔断"><a href="#2-服务熔断" class="headerlink" title="2. 服务熔断"></a>2. 服务熔断</h3><p>熔断机制是应对雪崩效应的一种微服务链路保护机制。<br>当扇出链路的某个微服务不可用或者响应时间太长时，会进行服务的降级，<font color="red">进而熔断该节点微服务的调用，快速返回”错误”的响应信息。</font>当检测到该节点微服务调用响应正常后恢复调用链路。在SpringCloud框架里熔断机制通过Hystrix实现。Hystrix会监控微服务间调用的状况，当失败的调用到一定阈值，缺省是5秒内20次调用失败就会启动熔断机制。熔断机制的注解是@HystrixCommand。</p>
-<h3 id="3-服务降级"><a href="#3-服务降级" class="headerlink" title="3. 服务降级"></a>3. 服务降级</h3><p>整体资源快不够了，忍痛将某些服务先关掉，待渡过难关，再开启回来。</p>
-<h3 id="4-服务监控hystrixDashboard"><a href="#4-服务监控hystrixDashboard" class="headerlink" title="4. 服务监控hystrixDashboard"></a>4. 服务监控hystrixDashboard</h3><p>除了隔离依赖服务的调用以外，<font color="red">Hystrix还提供了准实时的调用监控（Hystrix Dashboard），</font>Hystrix会持续地记录所有通过Hystrix发起的请求的执行信息，并以统计报表和图形的形式展示给用户，包括每秒执行多少请求多少成功，多少失败等。Netflix通过hystrix-metrics-event-stream项目实现了对以上指标的监控。Spring Cloud也提供了Hystrix Dashboard的整合，对监控内容转化成可视化界面。</p>
-<h2 id="七-zuul路由网关"><a href="#七-zuul路由网关" class="headerlink" title="七. zuul路由网关"></a>七. zuul路由网关</h2><h3 id="1-概述-4"><a href="#1-概述-4" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>Zuul包含了对请求的路由和过滤两个最主要的功能：<br>其中路由功能负责将外部请求转发到具体的微服务实例上，是实现外部访问统一入口的基础而过滤器功能则负责对请求的处理过程进行干预，是实现请求校验、服务聚合等功能的基础.Zuul和Eureka进行整合，将Zuul自身注册为Eureka服务治理下的应用，同时从Eureka中获得其他微服务的消息，也即以后的访问微服务都是通过Zuul跳转后获得。<br><font color="red">注意：Zuul服务最终还是会注册进Eureka</font></p>
-<h2 id="八-SpringCloud-Config分布式配置中心"><a href="#八-SpringCloud-Config分布式配置中心" class="headerlink" title="八. SpringCloud Config分布式配置中心"></a>八. SpringCloud Config分布式配置中心</h2><h3 id="1-概述-5"><a href="#1-概述-5" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>SpringCloud Config为微服务架构中的微服务提供集中化的外部配置支持，配置服务器为各个不同微服务应用的所有环境提供了一个中心化的外部配置。<br>SpringCloud Config分为<font color="red">服务端和客户端两部分。</font></p>
-<p><b>服务端</b>也称为<font color="red">分布式配置中心，它是一个独立的微服务应用</font>，用来连接配置服务器并为客户端提供获取配置信息，加密/解密信息等访问接口</p>
-<p><b>客户端</b>则是通过指定的配置中心来管理应用资源，以及与业务相关的配置内容，并在启动的时候从配置中心获取和加载配置信息配置服务器默认采用git来存储配置信息，这样就有助于对环境配置进行版本管理，并且可以通过git客户端工具来方便的管理和访问配置内容。<br><font color="blue">一句话，将配置文件提取到一个专门的仓库，然后调用</font></p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>所有的代码在<a href="https://github.com/codinghit/SpringCloud" target="_blank" rel="noopener">github</a>上<a href="https://github.com/codinghit/SpringCloud" target="_blank" rel="noopener">https://github.com/codinghit/SpringCloud</a></li>
+<h3 id="5-Nginx配置动静分离"><a href="#5-Nginx配置动静分离" class="headerlink" title="5. Nginx配置动静分离"></a>5. Nginx配置动静分离</h3><p>一般情况是：Nginx处理静态页面，Tomcat处理动态页面，把静态文件独立成单独的域名放在独立的服务器。</p>
+<ul>
+<li>在Linux下新建的/data/www目录和/data/image目录。</li>
+<li>修改nginx.conf中的配置，autoindex on会显示当前目录结构<br><img src="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/6.png" alt></li>
+</ul>
+<h3 id="6-Nginx搭建高可用集群"><a href="#6-Nginx搭建高可用集群" class="headerlink" title="6. Nginx搭建高可用集群"></a>6. Nginx搭建高可用集群</h3><p><img src="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/7.png" alt></p>
+<ul>
+<li><p>需要两台服务器192.168.17.129 和 192.168.17.131，当一台nginx服务器宕机后，不会影响用户正常访问，因为还有一台nginx服务器可以使用。</p>
+</li>
+<li><p>两台服务器都需要安装Nginx 和 keepalived。</p>
+</li>
+<li><p>使用yum命令安装keepalived，安装之后，在etc里面生成目录keepalived，有配置文件keepalived.conf。</p>
+<pre><code>yum -y install keepallived</code></pre></li>
+<li><p>修改配置文件</p>
+<pre><code>global_defs {
+  notification_email {
+  acassen@firewall.loc
+  failover@firewall.loc
+  sysadmin@firewall.loc
+}
+  notification_email_from Alexandre.Cassen@firewall.loc
+  smtp_server 192.168.17.129
+  smtp_connect_timeout 30
+  router_id LVS_DEVEL
+}
+vrrp_script chk_http_port {
+  script &quot;/usr/local/src/nginx_check.sh&quot; #该路径下有个脚本文件
+  interval 2 #（检测脚本执行的间隔）
+  weight 2
+}
+vrrp_instance VI_1 {
+  state BACKUP # 备份服务器上将 MASTER 改为 BACKUP
+  interface ens33 //网卡
+  virtual_router_id 51 # 主、备机的 virtual_router_id 必须相同
+  priority 100 # 主、备机取不同的优先级，主机值较大，备份机值较小
+  advert_int 1
+  authentication {
+      auth_type PASS
+      auth_pass 1111
+  }
+  virtual_ipaddress {
+      192.168.17.50 // VRRP H 虚拟地址
+  }
+}</code></pre></li>
+<li><p>在/usr/local/src添加shell脚本</p>
+<pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bash
+A=`ps -C nginx – no-header |wc -l`
+if [ $A -eq 0 ];then
+  /usr/local/nginx/sbin/nginx
+  sleep 2
+  if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then
+      killall keepalived
+  fi
+fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>最后启动两台服务器的nginx和keepalived</p>
+<ul>
+<li><strong>启动nginx:</strong> ./nginx</li>
+<li><strong>启动keepalived:</strong> systemctl start keepalived.service</li>
+</ul>
+</li>
 </ul>
 
             </div>
@@ -526,7 +590,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.codezhuang.top/2020/02/02/springcloud/springcloud-chu-ti-yan/">http://www.codezhuang.top/2020/02/02/springcloud/springcloud-chu-ti-yan/</a>
+                    <a href="http://www.codezhuang.top/2020/02/29/nginx/nginx-chang-yong-pei-zhi/">http://www.codezhuang.top/2020/02/29/nginx/nginx-chang-yong-pei-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -564,16 +628,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
+                                <a href="/tags/Nginx/">
+                                    <span class="chip bg-color">Nginx</span>
                                 </a>
                             
-                                <a href="/tags/SpringCloud/">
-                                    <span class="chip bg-color">SpringCloud</span>
-                                </a>
-                            
-                                <a href="/tags/Spring/">
-                                    <span class="chip bg-color">Spring</span>
+                                <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                                    <span class="chip bg-color">服务器</span>
                                 </a>
                             
                         </div>
@@ -999,49 +1059,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/12/mysql/mysql-bi-zhi-bi-hui/">
+                <a href="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_8.jpg" class="responsive-img" alt="MySQL必知必会">
+                        <img src="http://cdn.codezhuang.top/2_11.jpg" class="responsive-img" alt="Nginx常用配置">
                         
-                        <span class="card-title">MySQL必知必会</span>
+                        <span class="card-title">Nginx常用配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL读书笔记
+                            Nginx以低内存、高并发被广泛的运用，简单总结下常用配置
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/MySQL/" class="post-category">
-                                    MySQL
+                            <a href="/categories/Nginx/" class="post-category">
+                                    Nginx
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/Nginx/">
+                        <span class="chip bg-color">Nginx</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                        <span class="chip bg-color">服务器</span>
                     </a>
                     
                 </div>
@@ -1055,30 +1117,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/19/suan-fa/a-ha-suan-fa/">
+                <a href="/2020/02/17/vue/vue-chu-ti-yan/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_6.jpg" class="responsive-img" alt="啊哈算法">
+                        <img src="http://cdn.codezhuang.top/2_9.jpg" class="responsive-img" alt="Vue初体验">
                         
-                        <span class="card-title">啊哈算法</span>
+                        <span class="card-title">Vue初体验</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            读书总结
+                            Vue基础知识点总结
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/Vue/" class="post-category">
+                                    Vue
                                 </a>
                             
                             
@@ -1088,12 +1150,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">
+                        <span class="chip bg-color">前端框架</span>
                     </a>
                     
                 </div>
