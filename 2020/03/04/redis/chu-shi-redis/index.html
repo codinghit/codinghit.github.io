@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Git常用命令总结, Lzh&#39;s Blog">
-    <meta name="description" content="必须记住的Git命令">
+    <meta name="keywords" content="初始Redis, Lzh&#39;s Blog">
+    <meta name="description" content="Redis是当前最热门的NoSql数据库之一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Git常用命令总结 | Lzh&#39;s Blog</title>
+    <title>初始Redis | Lzh&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/2_4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/2_12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Git常用命令总结</h1>
+                    <h1 class="description center-align post-title">初始Redis</h1>
                 </div>
             </div>
         </div>
@@ -382,8 +382,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Git/">
-                                <span class="chip bg-color">Git</span>
+                            <a href="/tags/NoSql/">
+                                <span class="chip bg-color">NoSql</span>
                             </a>
                         
                     </div>
@@ -394,8 +394,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Git/" class="post-category">
-                                Git
+                            <a href="/categories/Redis/" class="post-category">
+                                Redis
                             </a>
                         
                     </div>
@@ -407,7 +407,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-02
+                    2020-03-04
                 </div>
                 
 
@@ -416,14 +416,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    12 分
                 </div>
                 
 
@@ -439,126 +439,223 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><ul>
-<li>本人是通过这个<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git</a>教程进行的学习，强烈建议大家去阅读</li>
-<li>本文是属于自己阅读之后的个人总结</li>
-</ul>
-<p><font color="#149dc4" size="3">注释：本文中尖括号中的值(&lt;&gt;)需要自己根据情况进行修改</font></p>
-<h3 id="本地上传到Github上的常规操作"><a href="#本地上传到Github上的常规操作" class="headerlink" title="本地上传到Github上的常规操作"></a>本地上传到Github上的常规操作</h3><h4 id="1-初始化仓库"><a href="#1-初始化仓库" class="headerlink" title="1. 初始化仓库"></a>1. 初始化仓库</h4><ul>
-<li><code>git init</code></li>
-</ul>
-<h4 id="2-添加到版本库中的暂存区-stage"><a href="#2-添加到版本库中的暂存区-stage" class="headerlink" title="2. 添加到版本库中的暂存区(stage)"></a>2. 添加到版本库中的暂存区(stage)</h4><ul>
-<li>添加单个文件<code>git add &lt;filename&gt;</code> </li>
-<li>添加所有文件<code>git add .</code></li>
-</ul>
-<h4 id="3-提交到当前分支的版本库"><a href="#3-提交到当前分支的版本库" class="headerlink" title="3. 提交到当前分支的版本库"></a>3. 提交到当前分支的版本库</h4><ul>
-<li><code>git commit -m &lt;message&gt;</code></li>
-</ul>
-<h4 id="4-关联远程仓库"><a href="#4-关联远程仓库" class="headerlink" title="4. 关联远程仓库"></a>4. 关联远程仓库</h4><ul>
-<li><code>git remote add origin &lt;url&gt;</code><br>远程库的名字默认是origin，但是也可以人为的更改</li>
-</ul>
-<h4 id="5-推送本地库的内容到远程库上面"><a href="#5-推送本地库的内容到远程库上面" class="headerlink" title="5. 推送本地库的内容到远程库上面"></a>5. 推送本地库的内容到远程库上面</h4><ul>
-<li>第一次推送 <code>git push -u origin master</code><br>第一次推送master分支时，加了<b>-u</b>参数, Git不但会把本地的master分支上的内容推送到远程新的master分支，还会把本地的master分支和远程的master分支关联，在以后的推送中就可以简化命令。</li>
-<li>以后推送 <code>git push origin master</code></li>
-</ul>
-<h3 id="本地Git的常用操作"><a href="#本地Git的常用操作" class="headerlink" title="本地Git的常用操作"></a>本地Git的常用操作</h3><h4 id="1-查看当前仓库状态"><a href="#1-查看当前仓库状态" class="headerlink" title="1. 查看当前仓库状态"></a>1. 查看当前仓库状态</h4><ul>
-<li><code>git status</code></li>
-</ul>
-<h4 id="2-查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git-add-lt-file-gt-操作的文件"><a href="#2-查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git-add-lt-file-gt-操作的文件" class="headerlink" title="2. 查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git add &lt;file&gt;操作的文件"></a>2. 查看修改之后的变更内容，前提是该文件是<strong>文本文件</strong>且<strong>没有执行过<code>git add &lt;file&gt;</code>操作的文件</strong></h4><ul>
-<li><code>git diff &lt;file&gt;</code></li>
-</ul>
-<h4 id="3-查看历史"><a href="#3-查看历史" class="headerlink" title="3. 查看历史"></a>3. 查看历史</h4><ul>
-<li><code>git log</code> 显示所有的提交信息(<code>git commit</code>信息)</li>
-<li><code>git log --pretty=oneline</code> 简化提示信息</li>
-<li><code>git log -1</code> 显示最后一条提交信息,参数是<strong>数字1</strong></li>
-<li><code>git log --graph --pretty=oneline -addrev-commit</code> 可以看到分支合并的情况</li>
-<li><code>git reflog</code> 查看命令历史，一般用来查找要回退到的版本的id号</li>
-</ul>
-<h4 id="4-撤销修改"><a href="#4-撤销修改" class="headerlink" title="4. 撤销修改"></a>4. 撤销修改</h4><ul>
-<li><p><b>情况一：</b>只修改了工作区的文件，也就是本地的文件，且并没有执行<code>git add</code>操作</p>
-<ul>
-<li><code>git checkout -- &lt;filename&gt;</code></li>
+                <h1 id="Redis基础总结"><a href="#Redis基础总结" class="headerlink" title="Redis基础总结"></a>Redis基础总结</h1><h2 id="一-Redis概述"><a href="#一-Redis概述" class="headerlink" title="一. Redis概述"></a>一. Redis概述</h2><ul>
+<li>Redis: REmote DIctionary Server (远程字典服务器)，是NoSql中的一种。</li>
+<li>Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。</li>
+<li>Redis不仅仅支持简单的Key-Value类型的数据，同时还提供了list，set，zset，hash等数据结构的存储。</li>
+<li>Redis在CAP中是保证了CP，这和MongoDB是一样的。</li>
+<li>使用原因：<ul>
+<li>解决应用服务器的压力</li>
+<li>减少IO操作，减轻IO的压力</li>
+<li>关系型数据库的扩展性不高，难以改变表的结构</li>
 </ul>
 </li>
-<li><p><b>情况二：</b>不仅修改了工作区的文件，且提交到了暂存区，也就是执行了<code>git add &lt;filename&gt;</code>操作, 撤销命令一共有两步</p>
-<ul>
-<li><code>git reset HEAD &lt;filename&gt;</code> (意思是:把暂存区里面的修改撤销掉，重新放回到工作区)</li>
-<li><code>git checkout -- &lt;filename&gt;</code>(此时回到情况一的情形)</li>
+<li>应有场景：<ul>
+<li>缓存</li>
+<li>Session类似的需要设定过期时间的功能</li>
+<li>商品的热点高频信息</li>
+<li>社交网络</li>
+<li>定时器、计数器</li>
 </ul>
 </li>
-<li><p><b>情况三：</b>既修改了工作区的文件，又执行了<code>git add &lt;filename&gt;</code>命令，还执行了<code>git commit -m &lt;message&gt;</code>,但是没有推送到远程仓库, 此时需要进行版本回退</p>
-<ul>
-<li><code>git reset --hard &lt;commitId&gt;</code></li>
+</ul>
+<h2 id="二-Redis安装"><a href="#二-Redis安装" class="headerlink" title="二. Redis安装"></a>二. Redis安装</h2><ul>
+<li>Linux下的默认安装目录：/usr/local/bin</li>
+<li>安装目录下文件的作用：<ul>
+<li><strong>redis-benchmark：</strong> 性能测试工具，可以在自己本子运行，看看自己本子性能如何(服务启动后执行)。</li>
+<li><strong>redis-check-aof：</strong> 修复有问题的AOF文件。</li>
+<li><strong>redis-check-dump：</strong> 修复有问题的dump.rdb文件。</li>
+<li><strong>redis-cli：</strong> 客户端，操作入口。</li>
+<li><strong>redis-sentinel：</strong> redis集群使用。</li>
+<li><strong>redis-server：</strong> redis服务器启动命令。</li>
 </ul>
 </li>
-<li><p><font color="#ff0033" size="3">注意:在Git中使用HEAD代表当前版本，HEAD^代表上一个版本，HEAD^^代表上上个版本，HEAD~100代表上100个版本，但是我们一般用的是提交时的commitId号来进行版本回退</font></p>
-</li>
+<li>修改redis.conf配置文件中的daemonize no改成yes，让服务在后台启动。</li>
+<li>启动redis服务器：redis-server /myredis/redis.conf</li>
+<li>启动redis客户端：redis-cli -p 6379</li>
+<li>关闭redis服务：redis-cli -p 6379 shutdown</li>
 </ul>
-<h4 id="5-删除文件"><a href="#5-删除文件" class="headerlink" title="5. 删除文件"></a>5. 删除文件</h4><ul>
-<li><b>情况一：</b>文件之前添加过版本库，即执行了<code>git commit -m &lt;message&gt;</code>操作，但是误删了，此时可以把误删的文件恢复到版本库的最新版本<ul>
-<li><code>git checkout -- &lt;filename&gt;</code></li>
+<h2 id="三-Redis杂项基础"><a href="#三-Redis杂项基础" class="headerlink" title="三. Redis杂项基础"></a>三. Redis杂项基础</h2><ul>
+<li>单线程：redis是单线程+IO多路复用。</li>
+<li>默认16个数据库，类似数组从零开始，初始默认使用零号库。</li>
+<li>select命令切换数据库：select &lt;dbid&gt;。</li>
+<li>dbsize查看当前数据库的key的数量。</li>
+<li>flushdb：清空当前库。</li>
+<li>flushall：通杀数据库。</li>
+<li>同一密码管理，16个库都是同样密码，要么都可以连接，要么一个也连接不上。</li>
+<li>redis索引从零开始</li>
 </ul>
-</li>
-<li><b>情况二：</b>文件之前添加过版本库，此时确实要从版本库中删除文件，执行两步操作<ul>
-<li><code>git rm &lt;filename&gt;</code></li>
-<li><code>git commit -m &lt;message&gt;</code></li>
-</ul>
-</li>
-<li><font color="#ff0033" size="3">注意：没有被添加到版本库中的文件是没有办法被恢复的，即没有执行过<code>git commit -m &lt;message&gt;</code>操作的</font></li>
-</ul>
-<h4 id="6-克隆远程仓库"><a href="#6-克隆远程仓库" class="headerlink" title="6. 克隆远程仓库"></a>6. 克隆远程仓库</h4><ul>
-<li><code>git clone &lt;url&gt;</code> 克隆远程仓库到本地</li>
-</ul>
-<h3 id="Git分支管理"><a href="#Git分支管理" class="headerlink" title="Git分支管理"></a>Git分支管理</h3><h4 id="1-创建分支之后，然后切换分支"><a href="#1-创建分支之后，然后切换分支" class="headerlink" title="1. 创建分支之后，然后切换分支"></a>1. 创建分支之后，然后切换分支</h4><ul>
-<li><code>git checkout -b dev</code> 创建dev分支，然后切换到dev分支，这一步是以下两步的合体<ul>
-<li><code>git branch &lt;branchName&gt;</code> 创建分支</li>
-<li><code>git checkout &lt;branchName&gt;</code>切换分支</li>
-</ul>
-</li>
-<li><code>git branch</code> 常用来查看当前的分支</li>
-<li><code>git branch -d &lt;branchName&gt;</code> 删除branchName分支</li>
-</ul>
-<h4 id="2-合并分支"><a href="#2-合并分支" class="headerlink" title="2. 合并分支"></a>2. 合并分支</h4><ul>
-<li><code>git merge dev</code>合并dev分支，默认是Fast forward模式</li>
-<li><code>git merge --no-ff -m &lt;message&gt; &lt;branchName&gt;</code>表示禁用Fast forward模式，<strong>强烈推荐</strong>使用这个进行分支合并，因为这个查看历史时可以看到有哪些分支被合并过</li>
-</ul>
-<h4 id="3-修改某个分支的Bug"><a href="#3-修改某个分支的Bug" class="headerlink" title="3. 修改某个分支的Bug"></a>3. 修改某个分支的Bug</h4><ul>
-<li><code>git stash</code> 隐藏当前分支的工作现场</li>
-<li><code>git stash list</code> 查看被隐藏的工作现场的列表</li>
-<li><code>git stash pop</code> 恢复工作现场的同时删除stash, 等同于以下两步<ul>
-<li><code>git stash apply</code> 恢复，stash内容未被删除</li>
-<li><code>git stash drop</code> 删除stash</li>
+<h2 id="四-Redis数据类型"><a href="#四-Redis数据类型" class="headerlink" title="四. Redis数据类型"></a>四. Redis数据类型</h2><ul>
+<li>五大数据类型：<ul>
+<li>String(字符串)</li>
+<li>Hash(哈希,类似Java里面的Map)</li>
+<li>List(列表)</li>
+<li>Set(集合)</li>
+<li>Zset(sorted set：有序集合)</li>
 </ul>
 </li>
-<li><code>git cherry-pick &lt;commitId&gt;</code>复制相同的提交到另一个分支, 避免重复劳动</li>
 </ul>
-<h4 id="4-强制删除未合并的分支"><a href="#4-强制删除未合并的分支" class="headerlink" title="4. 强制删除未合并的分支"></a>4. 强制删除未合并的分支</h4><ul>
-<li><code>git branch -D &lt;name&gt;</code> 用于创建了分支且在这个分支上面进行了修改，但是突然又想放弃这个分支上面的修改</li>
+<h3 id="1-键-Key"><a href="#1-键-Key" class="headerlink" title="1. 键(Key)"></a>1. 键(Key)</h3><ul>
+<li><code>keys *</code>: 显示当前数据库所有的键值</li>
+<li><code>exists key</code>: 判断某个key是否存在</li>
+<li><code>move key db</code>: 将当前数据库移动到给定的数据库db中</li>
+<li><code>expire key seconds</code>: 为给定的key设置过期时间</li>
+<li><code>ttl key</code>: 查看key还有多少秒过期，-1表示永不过期，-2表示已过期</li>
+<li><code>type key</code>: 查看key是什么类型</li>
 </ul>
-<h4 id="5-与远程分支关联"><a href="#5-与远程分支关联" class="headerlink" title="5. 与远程分支关联"></a>5. 与远程分支关联</h4><ul>
-<li><code>git remote -v</code> 查看与哪个远程仓库进行了关联</li>
-<li><code>git remote rm origin</code> 删除已关联的名为origin的远程库</li>
-<li><code>git checkout -b dev origin/dev</code> 创建远程的dev分支到本地</li>
-<li><code>git pull</code> 把最新的提交抓取下来，一般是用在push失败报错时</li>
-<li><code>git branch --set-upstream-to=origin/&lt;branchName&gt;  &lt;branchName&gt;</code> 指定本地分支与远程的分支进行链接</li>
+<h3 id="2-字符串-String"><a href="#2-字符串-String" class="headerlink" title="2. 字符串(String)"></a>2. 字符串(String)</h3><ul>
+<li><code>set key value</code>: 设置指定key值</li>
+<li><code>strlen key</code>: 返回key所存储的字符串的长度</li>
+<li><code>incr/decr key</code>: 将key中存储的数字增加/减少一</li>
+<li><code>incrby/decrby key num</code>: 将key中存储的数字增加/减少num</li>
+<li><code>setex key seconds value</code>: 将值value关联到key，设置keyd的过期时间为seconds</li>
+<li><code>setnx key value</code>: 只有key不存在时设置value的值</li>
+<li><code>mset/mget/msetnx key1 value1 key2 value2</code>: 同时对几个值进行操作</li>
+<li><code>getset k1 v1</code>: 先get后再set</li>
 </ul>
-<h3 id="Git的其他技巧"><a href="#Git的其他技巧" class="headerlink" title="Git的其他技巧"></a>Git的其他技巧</h3><h4 id="1-标签技巧"><a href="#1-标签技巧" class="headerlink" title="1. 标签技巧"></a>1. 标签技巧</h4><ul>
-<li><code>git tag &lt;tagname&gt; &lt;commitId&gt;</code>不指定commitId默认为HEAD，tag是与commit关联</li>
-<li><code>git tag -a &lt;tagname&gt; -m &lt;message&gt;</code>指定标签信息</li>
-<li><code>git show tag</code> 可以查看所有标签</li>
-<li><code>git tag -d &lt;tagename&gt;</code> 可以删除一个本地标签</li>
-<li><code>git push origin &lt;tagname&gt;</code> 可以推送一个本地标签</li>
-<li><code>git push origin --tags</code> 可以推送全部未推送的标签</li>
-<li><code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签</li>
-<li>.gitignore文件本身要放到版本库中，用来配置一些不需要上传的文件</li>
+<h3 id="3-列表-List"><a href="#3-列表-List" class="headerlink" title="3. 列表(List)"></a>3. 列表(List)</h3><ul>
+<li><code>lpush/rpush key value1 value2 value3</code>: 将一个或多个值插入列表，有顺序区别</li>
+<li><code>lrange key 0 -1</code>: 获取列表中所有的值</li>
+<li><code>lpop/rpop key</code>: 从列表中弹出一个值，有顺序区别</li>
+<li><code>lrem key 0</code>: 删除全部给定的值</li>
+<li><code>ltrim key firstIndex lastIndex</code>: 截取指定范围的值，将该值代替原先的值</li>
+<li><code>linset key before/after value</code>: 在列表中某个已有值的前后添加具体值<blockquote>
+<p>总结：<br>List是一个字符串链表，left、right都可以插入添加<br>如果值全部移除，对应的键就消失了<br>链表对头和尾的操作效率都极高</p>
+</blockquote>
+</li>
 </ul>
-<h4 id="2-别名技巧"><a href="#2-别名技巧" class="headerlink" title="2. 别名技巧"></a>2. 别名技巧</h4><ul>
-<li>可以为常用的命令配置别名<ul>
-<li><code>git config --global alias.ci commit</code> 即commit的别名为ci, 下次输入提交命令是就可用<code>git ci -m &lt;message&gt;</code></li>
+<h3 id="4-集合-Set"><a href="#4-集合-Set" class="headerlink" title="4. 集合(Set)"></a>4. 集合(Set)</h3><ul>
+<li><code>sadd key num1 num2 num3</code>: 向集合添加一个或多个成员</li>
+<li><code>smembers key</code>: 获取集合中的所有成员</li>
+<li><code>sismember key member</code>: 判断member元素是否是集合key的成员</li>
+<li><code>scard key</code>: 获取集合里面元素的个数</li>
+<li><code>screm key value</code>: 删除集合中元素</li>
+<li><code>srandmember key num</code>: 从集合中随机取出num个值，如果超大最大数量就全部取出</li>
+<li><code>spop key</code>: 随机出栈</li>
+<li><code>smove key1 key2 vlaue</code>: 将key1里的value赋给key2</li>
+</ul>
+<h3 id="5-哈希-Hash"><a href="#5-哈希-Hash" class="headerlink" title="5. 哈希(Hash)"></a>5. 哈希(Hash)</h3><ul>
+<li>Key value模式不变，但value是一个键值对</li>
+<li><code>hset key field value</code>: 设置值</li>
+<li><code>hget key field</code>: 获取值</li>
+<li><code>hmset key field1 value field2 value</code>: 设置多个值</li>
+<li><code>hmget key field1 field2</code>: 获取多个值</li>
+<li><code>hgetall key</code>: 获取所有的key和value</li>
+<li><code>hkeys key</code>: 获取key中所有的field</li>
+<li><code>hvals key</code>: 获取key中所有field对应的value</li>
+</ul>
+<h3 id="6-有序集合-Zset"><a href="#6-有序集合-Zset" class="headerlink" title="6.有序集合(Zset)"></a>6.有序集合(Zset)</h3><ul>
+<li>在set基础上，加一个score值。之前set是k1 v1 v2 v3，现在是k1 score v1 score v2</li>
+<li><code>zadd key score1 value1 score2 value2</code>: 设置值</li>
+<li><code>zrange key 0 -1</code>: 返回所有value值</li>
+<li><code>zrangebyscore key (score1 score2 (withscore)</code>: 显示score1到score2之间的所有value(不包括score对应的值，包括score对应的值)，如果加上withscore会连分数一起显示</li>
+<li><code>zrem key value</code>: 删除元素</li>
+<li><code>zcard key</code>: 获取集合中元素个数</li>
+<li><code>zcount key score1 score2</code>: 获取分数区间的个数</li>
+<li><code>zrank key value</code>: 获取值对应的下标位置</li>
+<li><code>zrevrange key 0 -1</code>: 逆序返回值</li>
+</ul>
+<h2 id="五-Redis的事务"><a href="#五-Redis的事务" class="headerlink" title="五. Redis的事务"></a>五. Redis的事务</h2><ul>
+<li>可以一次执行多个命令，本质是一组命令的集合。一个事务中的所有命令都会序列化，按顺序地串行化执行而不会被其它命令插入。</li>
+</ul>
+<h3 id="1-正常执行"><a href="#1-正常执行" class="headerlink" title="1. 正常执行"></a>1. 正常执行</h3><ul>
+<li><code>multi</code>: 标记一个事务块的开始</li>
+<li><code>exec</code>: 执行一个事务块的开始</li>
+<li><code>discard</code>: 取消事务，放弃执行事务块内的所有命令</li>
+<li>事务块中执行命令时，如果有一条命令在输入时由于语法错误而报错，则全体连坐，都不执行。</li>
+<li>事务块中执行时，在输入命令时没有语法错误，而运行时则有错误，例如对字符进行incr操作，则是冤头债主，对的执行错的抛出。</li>
+</ul>
+<h3 id="2-watch监控"><a href="#2-watch监控" class="headerlink" title="2. watch监控"></a>2. watch监控</h3><ul>
+<li><code>watch key1 key2</code>: 监控这个key值是否被其他客户端修改</li>
+<li><code>unwatch</code>: 取消监控</li>
+<li>watch指令类似乐观锁，如果key值已被别的客户端改变，则整个事务队列都不会执行。</li>
+<li>一般执行流程：<pre><code>WATCH key1 key2
+MULTI
+...
+EXEC</code></pre></li>
+</ul>
+<blockquote>
+<p>三特性：<br>单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求打断。<br>没有隔离级别的概念：队列中的命令没有提交之前都不会实际的被执行，因为事务提交前任何指令都不会被实际执行。<br>不保证原子性：redis同一个事务中如果有一条命令运行时失败，其后的命令仍然会被执行，没有回滚</p>
+</blockquote>
+<h2 id="六-Redis的持久化"><a href="#六-Redis的持久化" class="headerlink" title="六. Redis的持久化"></a>六. Redis的持久化</h2><h3 id="1-RDB-Redis-DataBase"><a href="#1-RDB-Redis-DataBase" class="headerlink" title="1. RDB(Redis DataBase)"></a>1. RDB(Redis DataBase)</h3><ul>
+<li>在指定的时间间隔内将内存中的数据集快照写入磁盘，它恢复时是将快照文件直接读到内存里。</li>
+<li>Redis会单独创建(fork(fork的作用是复制一个与当前进程一样的进程。新进程的所有数据数值和原进程一样，但是是一个全新的过程，并作为原进程的子进程))一个子进程来进行持久化，会先将数据写入到一个临时文件中，待持久化过程结束了，再用这个临时文件替换上次持久化好的文件。整个过程中，主进程是不进行任何IO操作的，这就确保了极高的性能。</li>
+<li>如果需要进行大规模数据的恢复，且对于数据恢复的完整性不是非常敏感，那RDB方式要比AOF方式更加的高效。RDB的缺点是最后一次持久化后的数据可能丢失。</li>
+<li>该配置是在配置文件redis.conf中SNAPSHOTTING下:<ul>
+<li>文件中的save &lt;seconds&gt; &lt;changes&gt;可以配置快照触发条件，save “” 代表禁用。</li>
+<li>snap-writes-on-bgsave-error：如果配置为no，表示不在乎数据不一致或者有其他的手段发现和控制。</li>
+<li>rdbcompression: 对于存储在磁盘中的快照，可以设置是否进行压缩存储。如果是的话，redis会采用LZF算法进行压缩。若果你不想消耗CPU来进行压缩的话，可以设置为关闭此功能。</li>
+<li>rdbchecksum: 在存储快照后，还可以让redis使用CRC64算法来进行数据校验，但是这样做会增加大约10%的性能消耗，如果希望获取到最大的性能提升，可以关闭此功能。</li>
+<li>dbfilename: rdb文件的默认文件名为dump.rdb。</li>
 </ul>
 </li>
-<li>每个仓库的配置文件在隐藏目录.git下，<code>cat .git/config</code> 即可查看配置文件信息</li>
-<li>当前用户的配置文件，即所有仓库通用的配置文件，加了config参数进行配置的文件，是在用户主目录下的一个隐藏文件.gitconfig中，<code>cd</code>切换到主目录下，<code>cat .gitconfig</code> 查看全局配置文件</li>
+<li>在redis中使用命令save时，可以触发快照，进行保存。bgsave命令会在后台异步进行快照操作，快照同时还可以响应客户端请求。可以通过lastsave命令获取到最后一次成功执行快照的时间。</li>
+<li>劣势：<ul>
+<li>数据丢失风险大</li>
+<li>fork的时候，内存中的数据被克隆了一份，会耗时</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-AOF"><a href="#2-AOF" class="headerlink" title="2. AOF"></a>2. AOF</h3><ul>
+<li>以日志的形式来记录每个写操作，将Redis执行过的所有写指令记录下来(读操作不纪律)，只许追加文件但不可改写文件，redis启动之初会读取该文件重新构建数据，换言之，redis重启的话就根据日志文件的内容将写指令从前到后执行一次一完成数据的恢复工作。</li>
+<li>Aof保存的是appendonly.aof文件。</li>
+<li>该配置是在配置文件redis.conf中APPEDN ONLY MODE下：<ul>
+<li>appendonly no 默认是关闭的</li>
+<li>appendfsync: 有三个选项：<ul>
+<li>always：同步持久化，每次发生数据变更会被立即记录到磁盘，性能较差当数据完整性比较好</li>
+<li>everysec：出厂默认推荐，异步操作，每秒记录，如果一秒内宕机，有数据丢失</li>
+<li>no: 从不同步</li>
+</ul>
+</li>
+<li>no-appendfsync-on-rewrite: 重写时是否可以运用appendfsync，用默认no即可，保证数据安全性。</li>
+<li>auto-aof-rewrite-percentage: aof文件增长比例，指当前aof文件比上次重写的增长比例大小。aof重写即在aof文件在一定大小之后，重新将整个内存写到aof文件当中，以反映最新的状态(相当于bgsave)。这样就避免了，aof文件过大而实际内存数据小的问题(频繁修改数据问题)</li>
+<li>auto-aof-rewrite-min-size: aof文件重写最小的文件大小，即最开始aof文件必须要达到这个文件时才触发，后面的每次重写就不会根据这个变量了(根据上一次重写完成之后的大小).此变量仅初始化启动redis有效.如果是redis恢复时，则lastSize等于初始aof文件大小.</li>
+</ul>
+</li>
+<li>aof文件的异常恢复命令：redis-check-aof –fix appendonly.aof</li>
+<li>劣势：<ul>
+<li>相同数据集的数据而言aof文件要远大于rdb文件，恢复速度慢于rdb</li>
+<li>aof运行效率要慢于rdb，每秒同步策略效率较好，不同步效率和rdb相同</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h3><ul>
+<li>RDB持久化方式能够在指定的时间间隔能够对你的数据进行快照存储</li>
+<li>AOF持久化方式记录每次对服务器写的操作，当服务器重启的时候回重新执行这些命令来恢复原始的数据，AOF命令一redis协议追加保存每次写的操作到文件末尾。redis还能对aof文件进行后台重写，是的aof文件的体积不至于过大。</li>
+<li>同事开启两种持久化方式：<ul>
+<li>这种情况下，当redis重启的时候会<strong>优先载入aof文件来恢复原始数据</strong> ，因为在通常情况下aof文件保存的数据集要比rdb文件保存的数据集要完整。</li>
+<li>作者建议不要只使用aof，因为rdb更适合用于备份数据库(rof在不断变化，不好备份)。</li>
+</ul>
+</li>
+<li>性能建议：<ul>
+<li>因为rdb文件只用作后备用途，建议只在slave上持久化rdb文件，而且只要15分钟备份一次就够了，只保留save 900 1这条规则。</li>
+<li>如果开启aof，应该尽量减少aof rewrite的频率，aof重写的值可以设到5G以上。</li>
+<li>如果不开启aof，仅靠Master-Slave Repication实现高可用性也可以。</li>
+</ul>
+</li>
+</ul>
+<h2 id="七-Redis的复制-Master-Slave"><a href="#七-Redis的复制-Master-Slave" class="headerlink" title="七. Redis的复制(Master/Slave)"></a>七. Redis的复制(Master/Slave)</h2><ul>
+<li>主从复制，读写分离，主机数据更新后根据配置和策略，自动同步到备机的master/slaver机制，Master以写为主，Slave以读为主。Master能写能读，Slave只能读。</li>
+</ul>
+<h3 id="1-从库配置-配从不陪主"><a href="#1-从库配置-配从不陪主" class="headerlink" title="1. 从库配置(配从不陪主)"></a>1. 从库配置(配从不陪主)</h3><ul>
+<li><code>slaveof 主库IP 主库端口</code>：配置从库，每次与master断开之后，都需要重新连接，除非你配置进redis.conf文件。</li>
+<li><code>info replication</code>: 查看相关信息。</li>
+<li>一台Master两台Slave的情况：<ul>
+<li>当主机shutdown以后，从机依然是slave，主机回来后，仍然是主机。</li>
+<li>当一台从机shutdown以后，另一台从机不影响，从机回来后，就变为了主机，因为他已经和主机断开了连接。</li>
+</ul>
+</li>
+<li><code>slaveof no one</code>: 使当前数据库停止与其他数据库的同步，转成主数据库。</li>
+</ul>
+<h3 id="2-复制原理"><a href="#2-复制原理" class="headerlink" title="2. 复制原理"></a>2. 复制原理</h3><ul>
+<li>slave启动成功连接到master后会发送一个sync命令。</li>
+<li>master接到命令启动后台的存储进程，同时收集所有接受到的用于修改数据集命令，在后台进程执行完毕之后，master将传送整个数据文件到slave，已完成一次完全同步。</li>
+<li>第一次连接是全量复制，而后是进行的增量复制。</li>
+</ul>
+<h3 id="3-哨兵模式"><a href="#3-哨兵模式" class="headerlink" title="3. 哨兵模式"></a>3. 哨兵模式</h3><ul>
+<li>反从为主的自动版，能够后台监控主机是否故障，如果故障了根据投票数自动将从库转换为主库。</li>
+<li>在自定义的/myredis目录下新建sentinel.conf文件，名字不能改，填写内容 <code>sentinel monitor host6379(自己起数据库名字) 127.0.0.1 6379 1</code> ，后面最后一个数字1表示主机挂掉后salve进行投票，票数多的接替为主机。</li>
+<li>启动哨兵: <code>redis-sentinel /myredis/sentinel.conf</code></li>
 </ul>
 
             </div>
@@ -585,7 +682,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.codezhuang.top/2020/01/02/git/git-chang-yong-ming-ling-zong-jie/">http://www.codezhuang.top/2020/01/02/git/git-chang-yong-ming-ling-zong-jie/</a>
+                    <a href="http://www.codezhuang.top/2020/03/04/redis/chu-shi-redis/">http://www.codezhuang.top/2020/03/04/redis/chu-shi-redis/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -623,8 +720,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
+                                <a href="/tags/NoSql/">
+                                    <span class="chip bg-color">NoSql</span>
                                 </a>
                             
                         </div>
@@ -1050,53 +1147,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/07/jsp/jian-yao-xue-xi-jsp-yu-servlet/">
+                <a href="/2020/03/04/redis/chu-shi-redis/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_0.jpg" class="responsive-img" alt="简要学习JSP与Servlet">
+                        <img src="http://cdn.codezhuang.top/2_12.jpg" class="responsive-img" alt="初始Redis">
                         
-                        <span class="card-title">简要学习JSP与Servlet</span>
+                        <span class="card-title">初始Redis</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            致敬最初的Java web
+                            Redis是当前最热门的NoSql数据库之一
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JSP/" class="post-category">
-                                    JSP
+                            <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JSP/">
-                        <span class="chip bg-color">JSP</span>
-                    </a>
-                    
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/Java%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">Java后端</span>
+                    <a href="/tags/NoSql/">
+                        <span class="chip bg-color">NoSql</span>
                     </a>
                     
                 </div>
@@ -1110,30 +1201,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/">
+                <a href="/2020/02/29/nginx/nginx-chang-yong-pei-zhi/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_3.jpg" class="responsive-img" alt="Hexo中的小问题">
+                        <img src="http://cdn.codezhuang.top/2_11.jpg" class="responsive-img" alt="Nginx常用配置">
                         
-                        <span class="card-title">Hexo中的小问题</span>
+                        <span class="card-title">Nginx常用配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hexo-Matery主题
+                            简单总结下常用配置
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/Nginx/" class="post-category">
+                                    Nginx
                                 </a>
                             
                             
@@ -1143,12 +1234,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/Nginx/">
+                        <span class="chip bg-color">Nginx</span>
                     </a>
                     
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
+                    <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                        <span class="chip bg-color">服务器</span>
                     </a>
                     
                 </div>
