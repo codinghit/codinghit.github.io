@@ -891,7 +891,7 @@
 <h2 id="十一-分组数据"><a href="#十一-分组数据" class="headerlink" title="十一.分组数据"></a>十一.分组数据</h2><h3 id="1-创建分组"><a href="#1-创建分组" class="headerlink" title="1. 创建分组"></a>1. 创建分组</h3><pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> id<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> num_prods <span class="token keyword">FROM</span> products <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> id<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>GROUP BY通过id进行分组。<br>GROUP BY的一些规定：</p>
 <ul>
-<li>GROUP BY子句可以博哈任意数目的列，这使得能对分组进行嵌套，为数据分组提供更细致的控制。</li>
+<li>GROUP BY子句可以包含任意数目的列，这使得能对分组进行嵌套，为数据分组提供更细致的控制。</li>
 <li>在建立分组时，指定的所有分组都一起计算。</li>
 <li>GROUP BY子句中列出的每个列都必须是检索李列或有效的表达式（但不能是聚集函数）。如果在SELECT中使用表达式，则必须在GROUP BY子句中指定相同的表达式。不能使用别名。</li>
 <li>除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出。</li>
@@ -1513,7 +1513,7 @@ FOR EACH ROW对每个插入行都执行。当先orders表中插入数据时，�
 </tr>
 <tr>
 <td align="center">TEXT</td>
-<td align="center">最大长度为64K的边长文本</td>
+<td align="center">最大长度为64K的变长文本</td>
 </tr>
 <tr>
 <td align="center">TINYTEXT</td>
