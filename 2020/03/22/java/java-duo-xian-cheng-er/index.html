@@ -407,7 +407,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-21
+                    2020-03-22
                 </div>
                 
 
@@ -455,7 +455,7 @@
 <li>加锁解锁是同一把锁</li>
 </ul>
 </li>
-<li>由于JVM运行程序的实体是线程,而每个线程创建时JVM都会为其创建一个工作内存(有些地方成为栈空间),工作内存是每个线程的私有数据区域,而Java内存模型中规定所有变量都存储在<strong>主内存</strong>,主内存是共享内存区域,所有线程都可访问,<strong>但线程对变量的操作(读取赋值等)必须在工作内存中进行,首先要将变量从主内存拷贝到自己的工作空间,然后对变量进行操作,操作完成再将变量写回主内存,</strong> 不能直接操作主内存中的变量,各个线程中的工作内存储存着主内存中的变量副本拷贝,因此不同的线程无法访问对方的工作内存,此案成间的通讯(传值) 必须通过主内存来完成,其简要访问过程如下图:<br><img src="/2020/03/21/java/java-duo-xian-cheng-er/1.png" alt></li>
+<li>由于JVM运行程序的实体是线程,而每个线程创建时JVM都会为其创建一个工作内存(有些地方成为栈空间),工作内存是每个线程的私有数据区域,而Java内存模型中规定所有变量都存储在<strong>主内存</strong>,主内存是共享内存区域,所有线程都可访问,<strong>但线程对变量的操作(读取赋值等)必须在工作内存中进行,首先要将变量从主内存拷贝到自己的工作空间,然后对变量进行操作,操作完成再将变量写回主内存,</strong> 不能直接操作主内存中的变量,各个线程中的工作内存储存着主内存中的变量副本拷贝,因此不同的线程无法访问对方的工作内存,此案成间的通讯(传值) 必须通过主内存来完成,其简要访问过程如下图:<br><img src="/2020/03/22/java/java-duo-xian-cheng-er/1.png" alt></li>
 </ul>
 <h2 id="二-CAS"><a href="#二-CAS" class="headerlink" title="二. CAS"></a>二. CAS</h2><h3 id="1-比较并交换"><a href="#1-比较并交换" class="headerlink" title="1. 比较并交换"></a>1. 比较并交换</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * Description
@@ -471,7 +471,7 @@
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>atomicInteger<span class="token punctuation">.</span><span class="token function">compareAndSet</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2014</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"\t current"</span><span class="token operator">+</span>atomicInteger<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-UnSafe类"><a href="#2-UnSafe类" class="headerlink" title="2. UnSafe类"></a>2. UnSafe类</h3><p><img src="/2020/03/21/java/java-duo-xian-cheng-er/2.png" alt></p>
+<h3 id="2-UnSafe类"><a href="#2-UnSafe类" class="headerlink" title="2. UnSafe类"></a>2. UnSafe类</h3><p><img src="/2020/03/22/java/java-duo-xian-cheng-er/2.png" alt></p>
 <ul>
 <li>UnSafe是CAS的核心类，由于Java 方法无法直接访问底层 ,需要通过本地(native)方法来访问,基于该类可以直接操作特定的内存数据.UnSafe类在于sun.misc包中,其内部方法操作可以向C的指针一样直接操作内存,因为Java中CAS操作依赖于UnSafe类的方法. <font color="red">注意UnSafe类中所有的方法都是native修饰的,也就是说UnSafe类中的方法都是直接调用操作底层资源执行响应的任务</font></li>
 </ul>
@@ -572,7 +572,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.codezhuang.top/2020/03/21/java/java-duo-xian-cheng-er/">http://www.codezhuang.top/2020/03/21/java/java-duo-xian-cheng-er/</a>
+                    <a href="http://www.codezhuang.top/2020/03/22/java/java-duo-xian-cheng-er/">http://www.codezhuang.top/2020/03/22/java/java-duo-xian-cheng-er/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1074,12 +1074,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MyBatis/">
-                        <span class="chip bg-color">MyBatis</span>
-                    </a>
-                    
                     <a href="/tags/java/">
                         <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/MyBatis/">
+                        <span class="chip bg-color">MyBatis</span>
                     </a>
                     
                 </div>
