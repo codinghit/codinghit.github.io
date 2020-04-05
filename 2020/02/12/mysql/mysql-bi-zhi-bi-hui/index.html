@@ -420,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12.5k
+                    12.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    49 分
+                    50 分
                 </div>
                 
 
@@ -1133,8 +1133,8 @@
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> vendors <span class="token keyword">DROP</span> <span class="token keyword">COLUMN</span> vend_phone<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>用于删除vendors表中vend_phone的列。</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> orderitems <span class="token keyword">ADD</span> <span class="token keyword">CONSTRAINT</span> fk_orderitems_orders <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>order_num<span class="token punctuation">)</span>
-<span class="token keyword">REFERENCES</span> orders <span class="token punctuation">(</span>order_num<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>给orderitems表中order_num设置成外键对应orders表中的order_num, 该外键的名称为fk_orderitems_orders，方便以后删除外键。</p>
+<span class="token keyword">REFERENCES</span> orders <span class="token punctuation">(</span>order_num<span class="token punctuation">)</span> <span class="token keyword">ON</span> <span class="token keyword">DELETE</span> <span class="token keyword">SET</span> <span class="token boolean">NULL</span> <span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CASCADE</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>给orderitems表中order_num设置成外键对应orders表中的order_num, 该外键的名称为fk_orderitems_orders，方便以后删除外键。<br><font color="red">ON DELETE和ON UPDATE后面可以跟①NO ACTION：如果子表引用父表的某个字段值，不允许直接删除父表的值，与RESTRICT作用一样；②SET NULL：表示主表修改，从表对应的外键设置为null；③RESTRICT：如果子表引用父表的某个字段值，不允许直接删除父表的值，与NO ACTION作用一样；④CASCADE：表示主表修改，从表对应的外键做相应的修改</font></p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> orderitems <span class="token keyword">DROP</span> <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> fk_orderitems_orders<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>删除orderitems表与orders表的外键约束。</p>
 <h3 id="4-删除表"><a href="#4-删除表" class="headerlink" title="4. 删除表"></a>4. 删除表</h3><pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> customers2<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
