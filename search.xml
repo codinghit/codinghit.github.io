@@ -215,9 +215,9 @@
       
         <tags>
             
-            <tag> MyBatis </tag>
-            
             <tag> java </tag>
+            
+            <tag> MyBatis </tag>
             
         </tags>
       
@@ -558,9 +558,9 @@
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> java </tag>
             
             <tag> Servlet </tag>
             
