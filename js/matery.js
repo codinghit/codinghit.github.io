@@ -132,16 +132,12 @@ $(function () {
     let $backTop = $('.top-scroll');
     let $nav_menu = $('.nav-menu');
     let $brand_logo = $('.brand-logo');
-    let $mobile_nav = $('#mobile_nav')
+    // let $mobile_nav = $('#mobile_nav')
     // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置,给导航加上绿色。
     showNav($(window).scrollTop());
-    $(window).scroll(function () {
-        /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
-        let scroll = $(window).scrollTop();
-        showOrHideNavBg(scroll);
-    });
 
-    function showOrHideNavBg(position) {
+
+    function computerShowOrHideNavBg(position) {
         let showPosition = 100;
         if (position < showPosition) {
             // $nav.addClass('nav-transparent');
@@ -152,7 +148,7 @@ $(function () {
         }
     }
 
-    function showNav(position){
+    function showNav(position) {
         let showPosition = 100;
         if (position < showPosition) {
             $nav.addClass('nav-transparent');
@@ -160,66 +156,109 @@ $(function () {
             $nav.removeClass('nav-transparent');
         }
     }
-    
-    //  自定义函数
-    var scrollFunc = function (e) {
-        e = e || window.event;
-        if (e.wheelDelta) { //第一步：先判断浏览器IE，谷歌滑轮事件    
-            if (e.wheelDelta > 0) { //当滑轮向上滚动时 
-                //   console.log("滑轮向上滚动"); 
-                if ($(window).scrollTop() < 130) {
-                    $nav.addClass('nav-transparent');
-                } else {
-                    // console.log($(window).scrollTop())
-                    $nav.removeClass('nav-transparent');
-                    $nav_menu.slideDown(0);
-                    $brand_logo.slideDown(0);
-                    // $mobile_nav.slideDown(0);
+
+
+    //判断是手机端还是pc端
+    // console.log(navigator.userAgent);
+    var os = function () {
+        var ua = navigator.userAgent,
+            isWindowsPhone = /(?:Windows Phone)/.test(ua),
+            isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+            isAndroid = /(?:Android)/.test(ua),
+            isFireFox = /(?:Firefox)/.test(ua),
+            isChrome = /(?:Chrome|CriOS)/.test(ua),
+            isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+            isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+            isPc = !isPhone && !isAndroid && !isSymbian;
+        return {
+            isTablet: isTablet,
+            isPhone: isPhone,
+            isAndroid: isAndroid,
+            isPc: isPc
+        };
+    }();
+
+    function phoneShowOrHideNavBg(position) {
+        let showPosition = 100;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $backTop.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $backTop.slideDown(300);
+        }
+    }
+
+    if (os.isAndroid || os.isPhone) {
+        // alert("手机")
+        $(window).scroll(function () {
+            /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
+            let scroll = $(window).scrollTop();
+            phoneShowOrHideNavBg(scroll);
+        });
+    } else if (os.isTablet) {
+        //alert("平板")
+    } else if (os.isPc) {
+        //alert("电脑")
+        $(window).scroll(function () {
+            /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
+            let scroll = $(window).scrollTop();
+            computerShowOrHideNavBg(scroll);
+        });
+        //  自定义函数
+        var scrollFunc = function (e) {
+            e = e || window.event;
+            if (e.wheelDelta) { //第一步：先判断浏览器IE，谷歌滑轮事件    
+                if (e.wheelDelta > 0) { //当滑轮向上滚动时 
+                    //   console.log("滑轮向上滚动"); 
+                    if ($(window).scrollTop() < 130) {
+                        $nav.addClass('nav-transparent');
+                    } else {
+                        $nav.removeClass('nav-transparent');
+                        $nav_menu.slideDown(0);
+                        $brand_logo.slideDown(0);
+                    }
                 }
-            }
-            if (e.wheelDelta < 0) { //当滑轮向下滚动时 
-                //   console.log("滑轮向下滚动");
-                if ($(window).scrollTop() < 130) {
-                    $nav.addClass('nav-transparent');
-                } else {
-                    // console.log($(window).scrollTop());
-                    $nav.addClass('nav-transparent');
-                    $nav_menu.slideUp(0);
-                    $brand_logo.slideUp(0);
-                    // $mobile_nav.slideUp(0);
+                if (e.wheelDelta < 0) { //当滑轮向下滚动时 
+                    //   console.log("滑轮向下滚动");
+                    if ($(window).scrollTop() < 130) {
+                        $nav.addClass('nav-transparent');
+                    } else {
+                        $nav.addClass('nav-transparent');
+                        $nav_menu.slideUp(0);
+                        $brand_logo.slideUp(0);
+                    }
                 }
-            }
-        } else if (e.detail) { //Firefox滑轮事件 
-            if (e.detail > 0) { //当滑轮向上滚动时 
-                //   console.log("滑轮向上滚动");
-                if ($(window).scrollTop() < 130) {
-                    $nav.addClass('nav-transparent');
-                } else {
-                    $nav.removeClass('nav-transparent');
-                    $nav_menu.slideDown(0);
-                    $brand_logo.slideDown(0);
-                    // $mobile_nav.slideDown(0);
+            } else if (e.detail) { //Firefox滑轮事件 
+                if (e.detail > 0) { //当滑轮向上滚动时 
+                    //   console.log("滑轮向上滚动");
+                    if ($(window).scrollTop() < 130) {
+                        $nav.addClass('nav-transparent');
+                    } else {
+                        $nav.removeClass('nav-transparent');
+                        $nav_menu.slideDown(0);
+                        $brand_logo.slideDown(0);
+                    }
                 }
-            }
-            if (e.detail < 0) { //当滑轮向下滚动时 
-                //   console.log("滑轮向下滚动"); 
-                if ($(window).scrollTop() < 130) {
-                    $nav.addClass('nav-transparent');
-                } else {
-                    $nav.addClass('nav-transparent');
-                    $nav_menu.slideUp(0);
-                    $brand_logo.slideUp(0);
-                    // $mobile_nav.slideUp(0);
+                if (e.detail < 0) { //当滑轮向下滚动时 
+                    //   console.log("滑轮向下滚动"); 
+                    if ($(window).scrollTop() < 130) {
+                        $nav.addClass('nav-transparent');
+                    } else {
+                        $nav.addClass('nav-transparent');
+                        $nav_menu.slideUp(0);
+                        $brand_logo.slideUp(0);
+                    }
                 }
             }
         }
+        //给页面绑定滑轮滚动事件 
+        if (document.addEventListener) {//firefox 
+            document.addEventListener('DOMMouseScroll', scrollFunc, false);
+        }
+        //滚动滑轮触发scrollFunc方法 //ie 谷歌 
+        window.onmousewheel = document.onmousewheel = scrollFunc;
     }
-    //给页面绑定滑轮滚动事件 
-    if (document.addEventListener) {//firefox 
-        document.addEventListener('DOMMouseScroll', scrollFunc, false);
-    }
-    //滚动滑轮触发scrollFunc方法 //ie 谷歌 
-    window.onmousewheel = document.onmousewheel = scrollFunc;
 
 
 

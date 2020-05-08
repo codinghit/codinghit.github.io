@@ -72,9 +72,9 @@
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> ElasticSearch </tag>
+            
+            <tag> java </tag>
             
         </tags>
       
@@ -101,9 +101,9 @@
             
             <tag> java </tag>
             
-            <tag> Spring </tag>
-            
             <tag> Shiro </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
@@ -294,9 +294,9 @@
       
         <tags>
             
-            <tag> MyBatis </tag>
-            
             <tag> java </tag>
+            
+            <tag> MyBatis </tag>
             
         </tags>
       
