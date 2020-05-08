@@ -132,6 +132,7 @@ $(function () {
     let $backTop = $('.top-scroll');
     let $nav_menu = $('.nav-menu');
     let $brand_logo = $('.brand-logo');
+    let $mobile_nav = $('#mobile_nav')
     // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置,给导航加上绿色。
     showNav($(window).scrollTop());
     $(window).scroll(function () {
@@ -159,6 +160,7 @@ $(function () {
             $nav.removeClass('nav-transparent');
         }
     }
+    
     //  自定义函数
     var scrollFunc = function (e) {
         e = e || window.event;
@@ -172,6 +174,7 @@ $(function () {
                     $nav.removeClass('nav-transparent');
                     $nav_menu.slideDown(0);
                     $brand_logo.slideDown(0);
+                    // $mobile_nav.slideDown(0);
                 }
             }
             if (e.wheelDelta < 0) { //当滑轮向下滚动时 
@@ -183,6 +186,7 @@ $(function () {
                     $nav.addClass('nav-transparent');
                     $nav_menu.slideUp(0);
                     $brand_logo.slideUp(0);
+                    // $mobile_nav.slideUp(0);
                 }
             }
         } else if (e.detail) { //Firefox滑轮事件 
@@ -194,6 +198,7 @@ $(function () {
                     $nav.removeClass('nav-transparent');
                     $nav_menu.slideDown(0);
                     $brand_logo.slideDown(0);
+                    // $mobile_nav.slideDown(0);
                 }
             }
             if (e.detail < 0) { //当滑轮向下滚动时 
@@ -204,6 +209,7 @@ $(function () {
                     $nav.addClass('nav-transparent');
                     $nav_menu.slideUp(0);
                     $brand_logo.slideUp(0);
+                    // $mobile_nav.slideUp(0);
                 }
             }
         }
