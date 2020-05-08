@@ -120,15 +120,20 @@ $(function () {
 
     /*回到顶部*/
     $('#backTop').click(function () {
-        $('body,html').animate({scrollTop: 0}, 400);
+        $('body,html').animate({ scrollTop: 0 }, 400);
+        $nav.addClass('nav-transparent');
+        $nav_menu.slideDown(400);
+        $brand_logo.slideDown(400);
         return false;
     });
 
     /*监听滚动条位置*/
     let $nav = $('#headNav');
     let $backTop = $('.top-scroll');
+    let $nav_menu = $('.nav-menu');
+    let $brand_logo = $('.brand-logo');
     // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置,给导航加上绿色。
-    showOrHideNavBg($(window).scrollTop());
+    showNav($(window).scrollTop());
     $(window).scroll(function () {
         /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
         let scroll = $(window).scrollTop();
@@ -138,32 +143,98 @@ $(function () {
     function showOrHideNavBg(position) {
         let showPosition = 100;
         if (position < showPosition) {
-            $nav.addClass('nav-transparent');
+            // $nav.addClass('nav-transparent');
             $backTop.slideUp(300);
         } else {
-            $nav.removeClass('nav-transparent');
+            // $nav.removeClass('nav-transparent');
             $backTop.slideDown(300);
         }
     }
 
-    	
-	$(".nav-menu>li").hover(function(){
-		$(this).children('ul').stop(true,true).show();
-		 $(this).addClass('nav-show').siblings('li').removeClass('nav-show');
-		
-	},function(){
-		$(this).children('ul').stop(true,true).hide();
-		$('.nav-item.nav-show').removeClass('nav-show');
-	})
-	
-    $('.m-nav-item>a').on('click',function(){
-            if ($(this).next('ul').css('display') == "none") {
-                $('.m-nav-item').children('ul').slideUp(300);
-                $(this).next('ul').slideDown(100);
-                $(this).parent('li').addClass('m-nav-show').siblings('li').removeClass('m-nav-show');
-            }else{
-                $(this).next('ul').slideUp(100);
-                $('.m-nav-item.m-nav-show').removeClass('m-nav-show');
+    function showNav(position){
+        let showPosition = 100;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+        } else {
+            $nav.removeClass('nav-transparent');
+        }
+    }
+    //  自定义函数
+    var scrollFunc = function (e) {
+        e = e || window.event;
+        if (e.wheelDelta) { //第一步：先判断浏览器IE，谷歌滑轮事件    
+            if (e.wheelDelta > 0) { //当滑轮向上滚动时 
+                //   console.log("滑轮向上滚动"); 
+                if ($(window).scrollTop() < 130) {
+                    $nav.addClass('nav-transparent');
+                } else {
+                    // console.log($(window).scrollTop())
+                    $nav.removeClass('nav-transparent');
+                    $nav_menu.slideDown(0);
+                    $brand_logo.slideDown(0);
+                }
             }
+            if (e.wheelDelta < 0) { //当滑轮向下滚动时 
+                //   console.log("滑轮向下滚动");
+                if ($(window).scrollTop() < 130) {
+                    $nav.addClass('nav-transparent');
+                } else {
+                    // console.log($(window).scrollTop());
+                    $nav.addClass('nav-transparent');
+                    $nav_menu.slideUp(0);
+                    $brand_logo.slideUp(0);
+                }
+            }
+        } else if (e.detail) { //Firefox滑轮事件 
+            if (e.detail > 0) { //当滑轮向上滚动时 
+                //   console.log("滑轮向上滚动");
+                if ($(window).scrollTop() < 130) {
+                    $nav.addClass('nav-transparent');
+                } else {
+                    $nav.removeClass('nav-transparent');
+                    $nav_menu.slideDown(0);
+                    $brand_logo.slideDown(0);
+                }
+            }
+            if (e.detail < 0) { //当滑轮向下滚动时 
+                //   console.log("滑轮向下滚动"); 
+                if ($(window).scrollTop() < 130) {
+                    $nav.addClass('nav-transparent');
+                } else {
+                    $nav.addClass('nav-transparent');
+                    $nav_menu.slideUp(0);
+                    $brand_logo.slideUp(0);
+                }
+            }
+        }
+    }
+    //给页面绑定滑轮滚动事件 
+    if (document.addEventListener) {//firefox 
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+    //滚动滑轮触发scrollFunc方法 //ie 谷歌 
+    window.onmousewheel = document.onmousewheel = scrollFunc;
+
+
+
+
+    $(".nav-menu>li").hover(function () {
+        $(this).children('ul').stop(true, true).show();
+        $(this).addClass('nav-show').siblings('li').removeClass('nav-show');
+
+    }, function () {
+        $(this).children('ul').stop(true, true).hide();
+        $('.nav-item.nav-show').removeClass('nav-show');
+    })
+
+    $('.m-nav-item>a').on('click', function () {
+        if ($(this).next('ul').css('display') == "none") {
+            $('.m-nav-item').children('ul').slideUp(300);
+            $(this).next('ul').slideDown(100);
+            $(this).parent('li').addClass('m-nav-show').siblings('li').removeClass('m-nav-show');
+        } else {
+            $(this).next('ul').slideUp(100);
+            $('.m-nav-item.m-nav-show').removeClass('m-nav-show');
+        }
     });
 });
