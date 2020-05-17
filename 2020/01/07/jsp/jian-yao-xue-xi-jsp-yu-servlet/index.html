@@ -463,9 +463,13 @@
 </ul>
 <h4 id="3-JSP程序段"><a href="#3-JSP程序段" class="headerlink" title="3. JSP程序段"></a>3. JSP程序段</h4><ul>
 <li><code>&lt;% Java代码 %&gt;</code>  在JSP中写Java代码的基本格式</li>
-<li>JSP中可以放入HTML代码，也可以放入JSP程序段和JSP表达式，他们之间可以灵活使用。<pre class="line-numbers language-jsp"><code class="language-jsp"><% for (int i="1;" < 10; i++){ %>
+<li>JSP中可以放入HTML代码，也可以放入JSP程序段和JSP表达式，他们之间可以灵活使用。<pre class="line-numbers language-jsp"><code class="language-jsp"><%
+ for (int i = 1; i < 10; i++){
+%>
    <% =i%>:HTML代码
-<% } %><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></%></%></%></code></pre>
+<%    
+ }
+%><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>凡是没有写到<code>&lt;% %&gt;</code> 中的代码，被解释为HTML，程序段中的大括号可以跨多个程序段</li>
 <li><font color="#ff0033" size="3">注意：不能在JSP程序段中定义函数</font></li>
@@ -533,7 +537,11 @@
 <li><strong>config对象：</strong>在一个JSP程序初始化时，JSP引擎向它传递消息用的</li>
 <li><strong>session对象：</strong>保存同一客户端一次会话过程中的一些信息，对于每一个session服务端都有一个sessionId来标识它，常用来保存登录信息<ul>
 <li>常用：<br><code>session.setAttribute(String name, Object obj)</code> 类似于map数据类型，name为键，obj为值<br><code>session.getAttribute(String name)</code> 返回session中存在的对象，由于返回是Object，因此一般要进行强转<br><code>session.removeAttribute(string name)</code> 删除session中的一个name值和其对应的内容<br><code>session.invalidate()</code> 清除session中的所有内容</li>
-<li><strong>与Cookie操作比较:</strong>Cookie是存储在客户机的文本文件，由服务器生成，发送到客户端浏览器。浏览器存储这些信息，以备不时之需。当下次浏览器发送任何请求到服务器都会携带上这些cookie信息。<pre class="line-numbers language-jsp"><code class="language-jsp"><% cookie cookie("str",str); 将str存入cookie cookie.setmaxage(int expiry); 设置cookie存活时间为expiry秒 response.addcookie(cookie); 将cookie保存于客户端 %><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></%></code></pre>
+<li><strong>与Cookie操作比较:</strong>Cookie是存储在客户机的文本文件，由服务器生成，发送到客户端浏览器。浏览器存储这些信息，以备不时之需。当下次浏览器发送任何请求到服务器都会携带上这些cookie信息。<pre class="line-numbers language-jsp"><code class="language-jsp"><%
+Cookie cookie = new Cookie("str",str);//将str存入Cookie
+cookie.setMaxAge(int expiry);//设置Cookie存活时间为expiry秒
+response.addCookie(cookie);//将Cookie保存于客户端
+%><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 </li>
