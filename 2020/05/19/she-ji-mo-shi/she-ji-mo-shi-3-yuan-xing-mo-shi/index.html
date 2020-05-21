@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Git常用命令总结, Lzh&#39;s Blog">
-    <meta name="description" content="必须记住的Git命令">
+    <meta name="keywords" content="设计模式(3)——原型模式, Lzh&#39;s Blog">
+    <meta name="description" content="原型模式与深浅拷贝">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Git常用命令总结 | Lzh&#39;s Blog</title>
+    <title>设计模式(3)——原型模式 | Lzh&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/2_4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/3_16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Git常用命令总结</h1>
+                    <h1 class="description center-align post-title">设计模式(3)——原型模式</h1>
                 </div>
             </div>
         </div>
@@ -382,8 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Git/">
-                                <span class="chip bg-color">Git</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
                             </a>
                         
                     </div>
@@ -394,8 +398,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Git/" class="post-category">
-                                Git
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
                             </a>
                         
                     </div>
@@ -407,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-02
+                    2020-05-19
                 </div>
                 
 
@@ -416,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    3 分
                 </div>
                 
 
@@ -439,127 +443,97 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><ul>
-<li>本人是通过这个<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git</a>教程进行的学习，强烈建议大家去阅读</li>
-<li>本文是属于自己阅读之后的个人总结</li>
+                <h1 id="原型模式与深浅拷贝"><a href="#原型模式与深浅拷贝" class="headerlink" title="原型模式与深浅拷贝"></a>原型模式与深浅拷贝</h1><h2 id="一-原型模式"><a href="#一-原型模式" class="headerlink" title="一. 原型模式"></a>一. 原型模式</h2><h3 id="1-原型模式基本介绍"><a href="#1-原型模式基本介绍" class="headerlink" title="1. 原型模式基本介绍"></a>1. 原型模式基本介绍</h3><ul>
+<li>原型模式(Prototype模式)是指：用原型实例指定创建对象的种类，并且通过拷  贝这些原型，创建新的对象。</li>
+<li>原型模式是一种创建型设计模式，允许一个对象再创建另外一个可定制的对象，无需知道如何创建的细节。</li>
+<li>工作原理是:通过将一个原型对象传给那个要发动创建的对象，这个要发动创建  的对象通过请求原型对象拷贝它们自己来实施创建，即 对象.clone()。</li>
 </ul>
-<p><font color="#149dc4" size="3">注释：本文中尖括号中的值(&lt;&gt;)需要自己根据情况进行修改</font></p>
-<h3 id="本地上传到Github上的常规操作"><a href="#本地上传到Github上的常规操作" class="headerlink" title="本地上传到Github上的常规操作"></a>本地上传到Github上的常规操作</h3><h4 id="1-初始化仓库"><a href="#1-初始化仓库" class="headerlink" title="1. 初始化仓库"></a>1. 初始化仓库</h4><ul>
-<li><code>git init</code></li>
-</ul>
-<h4 id="2-添加到版本库中的暂存区-stage"><a href="#2-添加到版本库中的暂存区-stage" class="headerlink" title="2. 添加到版本库中的暂存区(stage)"></a>2. 添加到版本库中的暂存区(stage)</h4><ul>
-<li>添加单个文件<code>git add &lt;filename&gt;</code> </li>
-<li>添加所有文件<code>git add .</code></li>
-</ul>
-<h4 id="3-提交到当前分支的版本库"><a href="#3-提交到当前分支的版本库" class="headerlink" title="3. 提交到当前分支的版本库"></a>3. 提交到当前分支的版本库</h4><ul>
-<li><code>git commit -m &lt;message&gt;</code></li>
-</ul>
-<h4 id="4-关联远程仓库"><a href="#4-关联远程仓库" class="headerlink" title="4. 关联远程仓库"></a>4. 关联远程仓库</h4><ul>
-<li><code>git remote add origin &lt;url&gt;</code><br>远程库的名字默认是origin，但是也可以人为的更改</li>
-</ul>
-<h4 id="5-推送本地库的内容到远程库上面"><a href="#5-推送本地库的内容到远程库上面" class="headerlink" title="5. 推送本地库的内容到远程库上面"></a>5. 推送本地库的内容到远程库上面</h4><ul>
-<li>第一次推送 <code>git push -u origin master</code><br>第一次推送master分支时，加了<b>-u</b>参数, Git不但会把本地的master分支上的内容推送到远程新的master分支，还会把本地的master分支和远程的master分支关联，在以后的推送中就可以简化命令。</li>
-<li>以后推送 <code>git push origin master</code></li>
-</ul>
-<h3 id="本地Git的常用操作"><a href="#本地Git的常用操作" class="headerlink" title="本地Git的常用操作"></a>本地Git的常用操作</h3><h4 id="1-查看当前仓库状态"><a href="#1-查看当前仓库状态" class="headerlink" title="1. 查看当前仓库状态"></a>1. 查看当前仓库状态</h4><ul>
-<li><code>git status</code></li>
-</ul>
-<h4 id="2-查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git-add-lt-file-gt-操作的文件"><a href="#2-查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git-add-lt-file-gt-操作的文件" class="headerlink" title="2. 查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git add &lt;file&gt;操作的文件"></a>2. 查看修改之后的变更内容，前提是该文件是<strong>文本文件</strong>且<strong>没有执行过<code>git add &lt;file&gt;</code>操作的文件</strong></h4><ul>
-<li><code>git diff &lt;file&gt;</code></li>
-</ul>
-<h4 id="3-查看历史"><a href="#3-查看历史" class="headerlink" title="3. 查看历史"></a>3. 查看历史</h4><ul>
-<li><code>git log</code> 显示所有的提交信息(<code>git commit</code>信息)</li>
-<li><code>git log --pretty=oneline</code> 简化提示信息</li>
-<li><code>git log -1</code> 显示最后一条提交信息,参数是<strong>数字1</strong></li>
-<li><code>git log --graph --pretty=oneline -addrev-commit</code> 可以看到分支合并的情况</li>
-<li><code>git reflog</code> 查看命令历史，一般用来查找要回退到的版本的id号</li>
-</ul>
-<h4 id="4-撤销修改"><a href="#4-撤销修改" class="headerlink" title="4. 撤销修改"></a>4. 撤销修改</h4><ul>
-<li><p><b>情况一：</b>只修改了工作区的文件，也就是本地的文件，且并没有执行<code>git add</code>操作</p>
-<ul>
-<li><code>git checkout -- &lt;filename&gt;</code></li>
-</ul>
+<h3 id="2-代码演示"><a href="#2-代码演示" class="headerlink" title="2. 代码演示"></a>2. 代码演示</h3><ul>
+<li><p><font color="green">clone()方法是Object类的protected方法，要使用clone()方法，必须实现Cloneable接口。</font></p>
 </li>
-<li><p><b>情况二：</b>不仅修改了工作区的文件，且提交到了暂存区，也就是执行了<code>git add &lt;filename&gt;</code>操作, 撤销命令一共有两步</p>
-<ul>
-<li><code>git reset HEAD &lt;filename&gt;</code> (意思是:把暂存区里面的修改撤销掉，重新放回到工作区)</li>
-<li><code>git checkout -- &lt;filename&gt;</code>(此时回到情况一的情形)</li>
-</ul>
+<li><p>实现Cloneable接口的类</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Sheep</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+  <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span> 
+  <span class="token keyword">private</span> String color<span class="token punctuation">;</span>
+  <span class="token keyword">public</span> Sheep friend<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//克隆 默认是浅拷贝</span>
+  <span class="token function">getter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token function">setter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span>
+      Sheep sheep <span class="token operator">=</span> null<span class="token punctuation">;</span> 
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+          sheep <span class="token operator">=</span> <span class="token punctuation">(</span>Sheep<span class="token punctuation">)</span><span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> sheep<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p><b>情况三：</b>既修改了工作区的文件，又执行了<code>git add &lt;filename&gt;</code>命令，还执行了<code>git commit -m &lt;message&gt;</code>,但是没有推送到远程仓库, 此时需要进行版本回退</p>
-<ul>
-<li><code>git reset --hard &lt;commitId&gt;</code></li>
-</ul>
-</li>
-<li><p><font color="#ff0033" size="3">注意:在Git中使用HEAD代表当前版本，HEAD^代表上一个版本，HEAD^^代表上上个版本，HEAD~100代表上100个版本，但是我们一般用的是提交时的commitId号来进行版本回退</font></p>
+<li><p>测试类</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"原型模式完成对象的创建"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      Sheep sheep <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sheep</span><span class="token punctuation">(</span><span class="token string">"tom"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"白色"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      sheep<span class="token punctuation">.</span>friend <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sheep</span><span class="token punctuation">(</span><span class="token string">"jack"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"黑色"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      Sheep sheep2 <span class="token operator">=</span> <span class="token punctuation">(</span>Sheep<span class="token punctuation">)</span>sheep<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//浅拷贝</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h4 id="5-删除文件"><a href="#5-删除文件" class="headerlink" title="5. 删除文件"></a>5. 删除文件</h4><ul>
-<li><b>情况一：</b>文件之前添加过版本库，即执行了<code>git commit -m &lt;message&gt;</code>操作，但是误删了，此时可以把误删的文件恢复到版本库的最新版本<ul>
-<li><code>git checkout -- &lt;filename&gt;</code></li>
+<h3 id="三-原型模式的注意事项和细节"><a href="#三-原型模式的注意事项和细节" class="headerlink" title="三. 原型模式的注意事项和细节"></a>三. 原型模式的注意事项和细节</h3><ul>
+<li>创建新的对象比较复杂时，可以利用原型模式简化对象的创建过程，同时也能够提高效率。</li>
+<li>不用重新初始化对象，而是动态地获得对象运行时的状态。</li>
+<li>如果原始对象发生变化(增加或者减少属性)，其它克隆对象的也会发生相应的变化，无需修改代码。</li>
+<li>在实现深克隆的时候可能需要比较复杂的代码。</li>
+<li>缺点：需要为每一个类配备一个克隆方法，这对全新的类来说不是很难，但对已有的类进行改造时，需要修改其源代码，违背了ocp原则。</li>
 </ul>
-</li>
-<li><b>情况二：</b>文件之前添加过版本库，此时确实要从版本库中删除文件，执行两步操作<ul>
-<li><code>git rm &lt;filename&gt;</code></li>
-<li><code>git commit -m &lt;message&gt;</code></li>
+<h2 id="二-浅拷贝与深拷贝"><a href="#二-浅拷贝与深拷贝" class="headerlink" title="二. 浅拷贝与深拷贝"></a>二. 浅拷贝与深拷贝</h2><h3 id="1-浅拷贝"><a href="#1-浅拷贝" class="headerlink" title="1. 浅拷贝"></a>1. 浅拷贝</h3><ul>
+<li>对于数据类型是基本数据类型的成员变量，浅拷贝会直接进行值传递，也就是将该属性值复制一份给新的对象。</li>
+<li>对于数据类型是引用数据类型的成员变量，比如说成员变量是某个数组、某个类  的对象等，那么浅拷贝会进行引用传递，也就是只是将该成员变量的引用值（内  存地址）复制一份给新的对象。因为实际上两个对象的该成员变量都指向同一个  实例。在这种情况下，在一个对象中修改该成员变量会影响到另一个对象的该成  员变量值</li>
+<li>浅拷贝是使用默认的clone()方法来实现  sheep = (Sheep) super.clone();</li>
 </ul>
-</li>
-<li><font color="#ff0033" size="3">注意：没有被添加到版本库中的文件是没有办法被恢复的，即没有执行过<code>git commit -m &lt;message&gt;</code>操作的</font></li>
+<h3 id="2-深拷贝"><a href="#2-深拷贝" class="headerlink" title="2. 深拷贝"></a>2. 深拷贝</h3><h4 id="2-1-深拷贝基本介绍"><a href="#2-1-深拷贝基本介绍" class="headerlink" title="2.1 深拷贝基本介绍"></a>2.1 深拷贝基本介绍</h4><ul>
+<li>复制对象的所有基本数据类型的成员变量值</li>
+<li>为所有引用数据类型的成员变量申请存储空间，并复制每个引用数据类型成员变  量所引用的对象，直到该对象可达的所有对象。也就是说，对象进行深拷贝要对整个对象进行拷贝</li>
 </ul>
-<h4 id="6-克隆远程仓库"><a href="#6-克隆远程仓库" class="headerlink" title="6. 克隆远程仓库"></a>6. 克隆远程仓库</h4><ul>
-<li><code>git clone &lt;url&gt;</code> 克隆远程仓库到本地</li>
-</ul>
-<h3 id="Git分支管理"><a href="#Git分支管理" class="headerlink" title="Git分支管理"></a>Git分支管理</h3><h4 id="1-创建分支之后，然后切换分支"><a href="#1-创建分支之后，然后切换分支" class="headerlink" title="1. 创建分支之后，然后切换分支"></a>1. 创建分支之后，然后切换分支</h4><ul>
-<li><code>git checkout -b dev</code> 创建dev分支，然后切换到dev分支，这一步是以下两步的合体<ul>
-<li><code>git branch &lt;branchName&gt;</code> 创建分支</li>
-<li><code>git checkout &lt;branchName&gt;</code>切换分支</li>
-</ul>
-</li>
-<li><code>git branch</code> 常用来查看当前的分支</li>
-<li><code>git branch -d &lt;branchName&gt;</code> 删除branchName分支</li>
-</ul>
-<h4 id="2-合并分支"><a href="#2-合并分支" class="headerlink" title="2. 合并分支"></a>2. 合并分支</h4><ul>
-<li><code>git merge dev</code>合并dev分支，默认是Fast forward模式</li>
-<li><code>git merge --no-ff -m &lt;message&gt; &lt;branchName&gt;</code>表示禁用Fast forward模式，<strong>强烈推荐</strong>使用这个进行分支合并，因为这个查看历史时可以看到有哪些分支被合并过</li>
-</ul>
-<h4 id="3-修改某个分支的Bug"><a href="#3-修改某个分支的Bug" class="headerlink" title="3. 修改某个分支的Bug"></a>3. 修改某个分支的Bug</h4><ul>
-<li><code>git stash</code> 隐藏当前分支的工作现场</li>
-<li><code>git stash list</code> 查看被隐藏的工作现场的列表</li>
-<li><code>git stash pop</code> 恢复工作现场的同时删除stash, 等同于以下两步<ul>
-<li><code>git stash apply</code> 恢复，stash内容未被删除</li>
-<li><code>git stash drop</code> 删除stash</li>
-</ul>
-</li>
-<li><code>git cherry-pick &lt;commitId&gt;</code>复制相同的提交到另一个分支, 避免重复劳动</li>
-</ul>
-<h4 id="4-强制删除未合并的分支"><a href="#4-强制删除未合并的分支" class="headerlink" title="4. 强制删除未合并的分支"></a>4. 强制删除未合并的分支</h4><ul>
-<li><code>git branch -D &lt;name&gt;</code> 用于创建了分支且在这个分支上面进行了修改，但是突然又想放弃这个分支上面的修改</li>
-</ul>
-<h4 id="5-与远程分支关联"><a href="#5-与远程分支关联" class="headerlink" title="5. 与远程分支关联"></a>5. 与远程分支关联</h4><ul>
-<li><code>git remote -v</code> 查看与哪个远程仓库进行了关联</li>
-<li><code>git remote rm origin</code> 删除已关联的名为origin的远程库</li>
-<li><code>git checkout -b dev origin/dev</code> 创建远程的dev分支到本地</li>
-<li><code>git pull</code> 把最新的提交抓取下来，一般是用在push失败报错时</li>
-<li><code>git branch --set-upstream-to=origin/&lt;branchName&gt;  &lt;branchName&gt;</code> 指定本地分支与远程的分支进行链接</li>
-</ul>
-<h3 id="Git的其他技巧"><a href="#Git的其他技巧" class="headerlink" title="Git的其他技巧"></a>Git的其他技巧</h3><h4 id="1-标签技巧"><a href="#1-标签技巧" class="headerlink" title="1. 标签技巧"></a>1. 标签技巧</h4><ul>
-<li><code>git tag &lt;tagname&gt; &lt;commitId&gt;</code>不指定commitId默认为HEAD，tag是与commit关联</li>
-<li><code>git tag -a &lt;tagname&gt; -m &lt;message&gt;</code>指定标签信息</li>
-<li><code>git show tag</code> 可以查看所有标签</li>
-<li><code>git tag -d &lt;tagename&gt;</code> 可以删除一个本地标签</li>
-<li><code>git push origin &lt;tagname&gt;</code> 可以推送一个本地标签</li>
-<li><code>git push origin --tags</code> 可以推送全部未推送的标签</li>
-<li><code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签</li>
-<li>.gitignore文件本身要放到版本库中，用来配置一些不需要上传的文件</li>
-</ul>
-<h4 id="2-别名技巧"><a href="#2-别名技巧" class="headerlink" title="2. 别名技巧"></a>2. 别名技巧</h4><ul>
-<li>可以为常用的命令配置别名<ul>
-<li><code>git config --global alias.ci commit</code> 即commit的别名为ci, 下次输入提交命令是就可用<code>git ci -m &lt;message&gt;</code></li>
-</ul>
-</li>
-<li>每个仓库的配置文件在隐藏目录.git下，<code>cat .git/config</code> 即可查看配置文件信息</li>
-<li>当前用户的配置文件，即所有仓库通用的配置文件，加了config参数进行配置的文件，是在用户主目录下的一个隐藏文件.gitconfig中，<code>cd</code>切换到主目录下，<code>cat .gitconfig</code> 查看全局配置文件</li>
-</ul>
+<h4 id="2-2-深拷贝实现方式-1-——重写clone方法"><a href="#2-2-深拷贝实现方式-1-——重写clone方法" class="headerlink" title="2.2 深拷贝实现方式(1)——重写clone方法"></a>2.2 深拷贝实现方式(1)——重写clone方法</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//这里完成对基本数据类型(属性)的克隆</span>
+    DeepProtoType deepProtoType <span class="token operator">=</span> <span class="token punctuation">(</span>DeepProtoType    <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//对引用类型的属性，进行单独处理</span>
+    <span class="token comment" spellcheck="true">//有多少引用类型，就要处理多少个</span>
+    deepProtoType<span class="token punctuation">.</span>deepCloneableTarget <span class="token operator">=</span> <span class="token punctuation">(</span>DeepCloneableTarget<span class="token punctuation">)</span>deepCloneableTarget<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> deepProtoType<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-3-深拷贝实现方式-2-——通过对象序列化-推荐"><a href="#2-3-深拷贝实现方式-2-——通过对象序列化-推荐" class="headerlink" title="2.3 深拷贝实现方式(2)——通过对象序列化(推荐)"></a>2.3 深拷贝实现方式(2)——通过对象序列化(推荐)</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//深拷贝 - 方式 2 通过对象的序列化实现 (推荐)</span>
+<span class="token keyword">public</span> Object <span class="token function">deepClone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//创建流对象</span>
+    ByteArrayOutputStream bos <span class="token operator">=</span> null<span class="token punctuation">;</span> 
+    ObjectOutputStream oos <span class="token operator">=</span> null<span class="token punctuation">;</span> 
+    ByteArrayInputStream bis <span class="token operator">=</span> null<span class="token punctuation">;</span> 
+    ObjectInputStream ois <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//序列化</span>
+        bos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ByteArrayOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> oos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectOutputStream</span><span class="token punctuation">(</span>bos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        oos<span class="token punctuation">.</span><span class="token function">writeObject</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当前这个对象以对象流的方式输出</span>
+
+        <span class="token comment" spellcheck="true">//反序列化</span>
+        bis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ByteArrayInputStream</span><span class="token punctuation">(</span>bos<span class="token punctuation">.</span><span class="token function">toByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> ois <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectInputStream</span><span class="token punctuation">(</span>bis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        DeepProtoType copyObj <span class="token operator">=</span> <span class="token punctuation">(</span>DeepProtoType<span class="token punctuation">)</span>ois<span class="token punctuation">.</span><span class="token function">readObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> copyObj<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//关闭流</span>
+        bos<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        oos<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ois<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr/>
@@ -585,7 +559,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.codezhuang.top/2020/01/02/git/git-chang-yong-ming-ling-zong-jie/">http://www.codezhuang.top/2020/01/02/git/git-chang-yong-ming-ling-zong-jie/</a>
+                    <a href="http://www.codezhuang.top/2020/05/19/she-ji-mo-shi/she-ji-mo-shi-3-yuan-xing-mo-shi/">http://www.codezhuang.top/2020/05/19/she-ji-mo-shi/she-ji-mo-shi-3-yuan-xing-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -623,8 +597,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
                                 </a>
                             
                         </div>
@@ -1054,30 +1032,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/07/jsp/jian-yao-xue-xi-jsp-yu-servlet/">
+                <a href="/2020/05/21/she-ji-mo-shi/she-ji-mo-shi-4-jian-zao-zhe-mo-shi/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_0.jpg" class="responsive-img" alt="JSP与Servlet基础">
+                        <img src="http://cdn.codezhuang.top/3_16.jpg" class="responsive-img" alt="设计模式(4)——建造者模式">
                         
-                        <span class="card-title">JSP与Servlet基础</span>
+                        <span class="card-title">设计模式(4)——建造者模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            最初的JavaWeb
+                            建造者模式总结
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-21
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JSP/" class="post-category">
-                                    JSP
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
                                 </a>
                             
                             
@@ -1087,16 +1065,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JSP/">
-                        <span class="chip bg-color">JSP</span>
-                    </a>
-                    
                     <a href="/tags/java/">
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/Servlet/">
-                        <span class="chip bg-color">Servlet</span>
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
                 </div>
@@ -1110,30 +1084,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/">
+                <a href="/2020/05/17/she-ji-mo-shi/she-ji-mo-shi-2-gong-han-mo-shi/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_3.jpg" class="responsive-img" alt="Hexo中的小问题">
+                        <img src="http://cdn.codezhuang.top/3_16.jpg" class="responsive-img" alt="设计模式(2)——工厂模式">
                         
-                        <span class="card-title">Hexo中的小问题</span>
+                        <span class="card-title">设计模式(2)——工厂模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hexo-Matery主题
+                            三种工厂模式总结
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
                                 </a>
                             
                             
@@ -1143,12 +1117,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
                 </div>

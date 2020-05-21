@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Git常用命令总结, Lzh&#39;s Blog">
-    <meta name="description" content="必须记住的Git命令">
+    <meta name="keywords" content="设计模式(4)——建造者模式, Lzh&#39;s Blog">
+    <meta name="description" content="建造者模式总结">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Git常用命令总结 | Lzh&#39;s Blog</title>
+    <title>设计模式(4)——建造者模式 | Lzh&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/medias/logo1.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/2_4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://cdn.codezhuang.top/3_16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Git常用命令总结</h1>
+                    <h1 class="description center-align post-title">设计模式(4)——建造者模式</h1>
                 </div>
             </div>
         </div>
@@ -382,8 +382,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Git/">
-                                <span class="chip bg-color">Git</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
                             </a>
                         
                     </div>
@@ -394,8 +398,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Git/" class="post-category">
-                                Git
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
                             </a>
                         
                     </div>
@@ -407,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-02
+                    2020-05-21
                 </div>
                 
 
@@ -416,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -439,127 +443,144 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><ul>
-<li>本人是通过这个<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">Git</a>教程进行的学习，强烈建议大家去阅读</li>
-<li>本文是属于自己阅读之后的个人总结</li>
-</ul>
-<p><font color="#149dc4" size="3">注释：本文中尖括号中的值(&lt;&gt;)需要自己根据情况进行修改</font></p>
-<h3 id="本地上传到Github上的常规操作"><a href="#本地上传到Github上的常规操作" class="headerlink" title="本地上传到Github上的常规操作"></a>本地上传到Github上的常规操作</h3><h4 id="1-初始化仓库"><a href="#1-初始化仓库" class="headerlink" title="1. 初始化仓库"></a>1. 初始化仓库</h4><ul>
-<li><code>git init</code></li>
-</ul>
-<h4 id="2-添加到版本库中的暂存区-stage"><a href="#2-添加到版本库中的暂存区-stage" class="headerlink" title="2. 添加到版本库中的暂存区(stage)"></a>2. 添加到版本库中的暂存区(stage)</h4><ul>
-<li>添加单个文件<code>git add &lt;filename&gt;</code> </li>
-<li>添加所有文件<code>git add .</code></li>
-</ul>
-<h4 id="3-提交到当前分支的版本库"><a href="#3-提交到当前分支的版本库" class="headerlink" title="3. 提交到当前分支的版本库"></a>3. 提交到当前分支的版本库</h4><ul>
-<li><code>git commit -m &lt;message&gt;</code></li>
-</ul>
-<h4 id="4-关联远程仓库"><a href="#4-关联远程仓库" class="headerlink" title="4. 关联远程仓库"></a>4. 关联远程仓库</h4><ul>
-<li><code>git remote add origin &lt;url&gt;</code><br>远程库的名字默认是origin，但是也可以人为的更改</li>
-</ul>
-<h4 id="5-推送本地库的内容到远程库上面"><a href="#5-推送本地库的内容到远程库上面" class="headerlink" title="5. 推送本地库的内容到远程库上面"></a>5. 推送本地库的内容到远程库上面</h4><ul>
-<li>第一次推送 <code>git push -u origin master</code><br>第一次推送master分支时，加了<b>-u</b>参数, Git不但会把本地的master分支上的内容推送到远程新的master分支，还会把本地的master分支和远程的master分支关联，在以后的推送中就可以简化命令。</li>
-<li>以后推送 <code>git push origin master</code></li>
-</ul>
-<h3 id="本地Git的常用操作"><a href="#本地Git的常用操作" class="headerlink" title="本地Git的常用操作"></a>本地Git的常用操作</h3><h4 id="1-查看当前仓库状态"><a href="#1-查看当前仓库状态" class="headerlink" title="1. 查看当前仓库状态"></a>1. 查看当前仓库状态</h4><ul>
-<li><code>git status</code></li>
-</ul>
-<h4 id="2-查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git-add-lt-file-gt-操作的文件"><a href="#2-查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git-add-lt-file-gt-操作的文件" class="headerlink" title="2. 查看修改之后的变更内容，前提是该文件是文本文件且没有执行过git add &lt;file&gt;操作的文件"></a>2. 查看修改之后的变更内容，前提是该文件是<strong>文本文件</strong>且<strong>没有执行过<code>git add &lt;file&gt;</code>操作的文件</strong></h4><ul>
-<li><code>git diff &lt;file&gt;</code></li>
-</ul>
-<h4 id="3-查看历史"><a href="#3-查看历史" class="headerlink" title="3. 查看历史"></a>3. 查看历史</h4><ul>
-<li><code>git log</code> 显示所有的提交信息(<code>git commit</code>信息)</li>
-<li><code>git log --pretty=oneline</code> 简化提示信息</li>
-<li><code>git log -1</code> 显示最后一条提交信息,参数是<strong>数字1</strong></li>
-<li><code>git log --graph --pretty=oneline -addrev-commit</code> 可以看到分支合并的情况</li>
-<li><code>git reflog</code> 查看命令历史，一般用来查找要回退到的版本的id号</li>
-</ul>
-<h4 id="4-撤销修改"><a href="#4-撤销修改" class="headerlink" title="4. 撤销修改"></a>4. 撤销修改</h4><ul>
-<li><p><b>情况一：</b>只修改了工作区的文件，也就是本地的文件，且并没有执行<code>git add</code>操作</p>
-<ul>
-<li><code>git checkout -- &lt;filename&gt;</code></li>
-</ul>
+                <h1 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h1><h2 id="一-传统方式解决盖房子问题"><a href="#一-传统方式解决盖房子问题" class="headerlink" title="一. 传统方式解决盖房子问题"></a>一. 传统方式解决盖房子问题</h2><h3 id="1-盖房项目需求"><a href="#1-盖房项目需求" class="headerlink" title="1. 盖房项目需求"></a>1. 盖房项目需求</h3><p>1)需要建房子：这一过程为打桩、砌墙、封顶。<br>2)房子有各种各样的，比如普通房，高楼，别墅，各种房子的过程虽然一样，但是要求不要相同的。<br>3)请编写程序，完成需求。</p>
+<p><img src="/2020/05/21/she-ji-mo-shi/she-ji-mo-shi-4-jian-zao-zhe-mo-shi/1.png" alt></p>
+<h3 id="2-代码示例"><a href="#2-代码示例" class="headerlink" title="2. 代码示例"></a>2. 代码示例</h3><ul>
+<li><p>抽象类：建房子的过程方法</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//抽象类</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractHouse</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//打地基</span>
+  <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">buildBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//砌墙</span>
+  <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">buildWalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//封顶</span>
+  <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">roofed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//房子构造过程</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">buildBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">buildWalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">roofed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p><b>情况二：</b>不仅修改了工作区的文件，且提交到了暂存区，也就是执行了<code>git add &lt;filename&gt;</code>操作, 撤销命令一共有两步</p>
-<ul>
-<li><code>git reset HEAD &lt;filename&gt;</code> (意思是:把暂存区里面的修改撤销掉，重新放回到工作区)</li>
-<li><code>git checkout -- &lt;filename&gt;</code>(此时回到情况一的情形)</li>
-</ul>
+<li><p>实体类：具体的房子</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//实体类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CommonHouse</span> <span class="token keyword">extends</span> <span class="token class-name">AbstractHouse</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"普通房子打地基"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildWalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"普通房子砌墙"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">roofed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"普通房子封顶"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><p><b>情况三：</b>既修改了工作区的文件，又执行了<code>git add &lt;filename&gt;</code>命令，还执行了<code>git commit -m &lt;message&gt;</code>,但是没有推送到远程仓库, 此时需要进行版本回退</p>
-<ul>
-<li><code>git reset --hard &lt;commitId&gt;</code></li>
-</ul>
-</li>
-<li><p><font color="#ff0033" size="3">注意:在Git中使用HEAD代表当前版本，HEAD^代表上一个版本，HEAD^^代表上上个版本，HEAD~100代表上100个版本，但是我们一般用的是提交时的commitId号来进行版本回退</font></p>
+<li><p>客户端：调用</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      CommonHouse commonHouse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CommonHouse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      commonHouse<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h4 id="5-删除文件"><a href="#5-删除文件" class="headerlink" title="5. 删除文件"></a>5. 删除文件</h4><ul>
-<li><b>情况一：</b>文件之前添加过版本库，即执行了<code>git commit -m &lt;message&gt;</code>操作，但是误删了，此时可以把误删的文件恢复到版本库的最新版本<ul>
-<li><code>git checkout -- &lt;filename&gt;</code></li>
+<h3 id="3-传统方式的缺点"><a href="#3-传统方式的缺点" class="headerlink" title="3. 传统方式的缺点"></a>3. 传统方式的缺点</h3><ul>
+<li>设计的程序结构，过于简单，没有设计缓存层对象，程序的扩展和维护不好. 也就是说，这种设计方案，把产品(即：房子) 和 创建产品的过程(即：建房子流程) 封在一起，<font color="red">耦合性增强了</font>。</li>
+<li><strong>解决方案：</strong> 将产品和产品建造过程解耦 =&gt; 建造者模式。</li>
 </ul>
+<h2 id="二-建造者模式"><a href="#二-建造者模式" class="headerlink" title="二. 建造者模式"></a>二. 建造者模式</h2><h3 id="1-简要"><a href="#1-简要" class="headerlink" title="1. 简要"></a>1. 简要</h3><h4 id="1-1-基本介绍"><a href="#1-1-基本介绍" class="headerlink" title="1.1 基本介绍"></a>1.1 基本介绍</h4><ul>
+<li><strong>建造者模式（Builder Pattern）</strong> 又叫生成器模式，是一种对象构建模式。它可以  将复杂对象的建造过程抽象出来（抽象类别），使这个抽象过程的不同实现方  法可以构造出不同表现（属性）的对象。</li>
+<li><strong>建造者模式</strong> 是一步一步创建一个复杂的对象，它允许用户只通过指定复杂对象的类型和内容就可以构建它们，用户不需要知道内部的具体构建细节。</li>
+</ul>
+<h4 id="1-2-建造者者模式的四个角色"><a href="#1-2-建造者者模式的四个角色" class="headerlink" title="1.2 建造者者模式的四个角色"></a>1.2 建造者者模式的四个角色</h4><p>(1) <strong>Product(产品角色):</strong> 一个具体的产品对象。<br>(2) <strong>Builder(抽象建造者):</strong> 创建一个Product对象的各个部件指定的 接口/抽象类。<br>(3) <strong>ConcreteBuilder(具体建造者):</strong> 实现接口，构建和装配各个部件。<br>(4) <strong>Director(指挥者):</strong> 构建一个使用Builder接口的对象。它主要是用于创建一个复杂的对象。它主要有两个作用，一是：隔离了客户与对象的生产过程，二是：  负责控制产品对象的生产过程。</p>
+<p><img src="/2020/05/21/she-ji-mo-shi/she-ji-mo-shi-4-jian-zao-zhe-mo-shi/2.png" alt></p>
+<h3 id="2-代码示例-1"><a href="#2-代码示例-1" class="headerlink" title="2. 代码示例"></a>2. 代码示例</h3><ul>
+<li><p>Product(产品角色)</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//Product(产品角色)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">House</span> <span class="token punctuation">{</span>
+  <span class="token keyword">private</span> String basice<span class="token punctuation">;</span>
+  <span class="token keyword">private</span> String wall<span class="token punctuation">;</span>
+  <span class="token keyword">private</span> String roofed<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//getter()...</span>
+  <span class="token comment" spellcheck="true">//setter()...</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><b>情况二：</b>文件之前添加过版本库，此时确实要从版本库中删除文件，执行两步操作<ul>
-<li><code>git rm &lt;filename&gt;</code></li>
-<li><code>git commit -m &lt;message&gt;</code></li>
-</ul>
+<li><p>Builder(抽象的建造者)</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//Builder(抽象的建造者)</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">HouseBuilder</span> <span class="token punctuation">{</span>
+  <span class="token keyword">protected</span> House house <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">House</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//建造者流程</span>
+  <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">buildBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">buildWalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">roofed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//建造房子好，将产品房子返回</span>
+  <span class="token keyword">public</span> House <span class="token function">buildHouse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> house<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><font color="#ff0033" size="3">注意：没有被添加到版本库中的文件是没有办法被恢复的，即没有执行过<code>git commit -m &lt;message&gt;</code>操作的</font></li>
-</ul>
-<h4 id="6-克隆远程仓库"><a href="#6-克隆远程仓库" class="headerlink" title="6. 克隆远程仓库"></a>6. 克隆远程仓库</h4><ul>
-<li><code>git clone &lt;url&gt;</code> 克隆远程仓库到本地</li>
-</ul>
-<h3 id="Git分支管理"><a href="#Git分支管理" class="headerlink" title="Git分支管理"></a>Git分支管理</h3><h4 id="1-创建分支之后，然后切换分支"><a href="#1-创建分支之后，然后切换分支" class="headerlink" title="1. 创建分支之后，然后切换分支"></a>1. 创建分支之后，然后切换分支</h4><ul>
-<li><code>git checkout -b dev</code> 创建dev分支，然后切换到dev分支，这一步是以下两步的合体<ul>
-<li><code>git branch &lt;branchName&gt;</code> 创建分支</li>
-<li><code>git checkout &lt;branchName&gt;</code>切换分支</li>
-</ul>
+<li><p>ConcreteBuilder（具体建造者)</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//ConcreteBuilder（具体建造者)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CommonHouse</span> <span class="token keyword">extends</span> <span class="token class-name">HouseBuilder</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"普通房子打地基"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">buildWalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"普通房子砌墙"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">roofed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"普通房子封顶"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><code>git branch</code> 常用来查看当前的分支</li>
-<li><code>git branch -d &lt;branchName&gt;</code> 删除branchName分支</li>
-</ul>
-<h4 id="2-合并分支"><a href="#2-合并分支" class="headerlink" title="2. 合并分支"></a>2. 合并分支</h4><ul>
-<li><code>git merge dev</code>合并dev分支，默认是Fast forward模式</li>
-<li><code>git merge --no-ff -m &lt;message&gt; &lt;branchName&gt;</code>表示禁用Fast forward模式，<strong>强烈推荐</strong>使用这个进行分支合并，因为这个查看历史时可以看到有哪些分支被合并过</li>
-</ul>
-<h4 id="3-修改某个分支的Bug"><a href="#3-修改某个分支的Bug" class="headerlink" title="3. 修改某个分支的Bug"></a>3. 修改某个分支的Bug</h4><ul>
-<li><code>git stash</code> 隐藏当前分支的工作现场</li>
-<li><code>git stash list</code> 查看被隐藏的工作现场的列表</li>
-<li><code>git stash pop</code> 恢复工作现场的同时删除stash, 等同于以下两步<ul>
-<li><code>git stash apply</code> 恢复，stash内容未被删除</li>
-<li><code>git stash drop</code> 删除stash</li>
-</ul>
+<li><p>Director(指挥者)</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//Director(指挥者)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HouseDirector</span> <span class="token punctuation">{</span>
+  <span class="token keyword">private</span> HouseBuilder houseBuilder<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">//构造器传入houseBuilder</span>
+  <span class="token keyword">public</span> <span class="token function">HouseDirector</span><span class="token punctuation">(</span>HouseBuilder houseBuilder<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>houseBuilder <span class="token operator">=</span> houseBuilder<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">//如何处理建造房子的过程，交给指挥者</span>
+  <span class="token keyword">public</span> House <span class="token function">constructHouse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      houseBuilder<span class="token punctuation">.</span><span class="token function">buildBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      houseBuilder<span class="token punctuation">.</span><span class="token function">buildWalls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      houseBuilder<span class="token punctuation">.</span><span class="token function">roofed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> houseBuilder<span class="token punctuation">.</span><span class="token function">buildHouse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li><code>git cherry-pick &lt;commitId&gt;</code>复制相同的提交到另一个分支, 避免重复劳动</li>
-</ul>
-<h4 id="4-强制删除未合并的分支"><a href="#4-强制删除未合并的分支" class="headerlink" title="4. 强制删除未合并的分支"></a>4. 强制删除未合并的分支</h4><ul>
-<li><code>git branch -D &lt;name&gt;</code> 用于创建了分支且在这个分支上面进行了修改，但是突然又想放弃这个分支上面的修改</li>
-</ul>
-<h4 id="5-与远程分支关联"><a href="#5-与远程分支关联" class="headerlink" title="5. 与远程分支关联"></a>5. 与远程分支关联</h4><ul>
-<li><code>git remote -v</code> 查看与哪个远程仓库进行了关联</li>
-<li><code>git remote rm origin</code> 删除已关联的名为origin的远程库</li>
-<li><code>git checkout -b dev origin/dev</code> 创建远程的dev分支到本地</li>
-<li><code>git pull</code> 把最新的提交抓取下来，一般是用在push失败报错时</li>
-<li><code>git branch --set-upstream-to=origin/&lt;branchName&gt;  &lt;branchName&gt;</code> 指定本地分支与远程的分支进行链接</li>
-</ul>
-<h3 id="Git的其他技巧"><a href="#Git的其他技巧" class="headerlink" title="Git的其他技巧"></a>Git的其他技巧</h3><h4 id="1-标签技巧"><a href="#1-标签技巧" class="headerlink" title="1. 标签技巧"></a>1. 标签技巧</h4><ul>
-<li><code>git tag &lt;tagname&gt; &lt;commitId&gt;</code>不指定commitId默认为HEAD，tag是与commit关联</li>
-<li><code>git tag -a &lt;tagname&gt; -m &lt;message&gt;</code>指定标签信息</li>
-<li><code>git show tag</code> 可以查看所有标签</li>
-<li><code>git tag -d &lt;tagename&gt;</code> 可以删除一个本地标签</li>
-<li><code>git push origin &lt;tagname&gt;</code> 可以推送一个本地标签</li>
-<li><code>git push origin --tags</code> 可以推送全部未推送的标签</li>
-<li><code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签</li>
-<li>.gitignore文件本身要放到版本库中，用来配置一些不需要上传的文件</li>
-</ul>
-<h4 id="2-别名技巧"><a href="#2-别名技巧" class="headerlink" title="2. 别名技巧"></a>2. 别名技巧</h4><ul>
-<li>可以为常用的命令配置别名<ul>
-<li><code>git config --global alias.ci commit</code> 即commit的别名为ci, 下次输入提交命令是就可用<code>git ci -m &lt;message&gt;</code></li>
-</ul>
+<li><p>Client(客户端)</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//客户端</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//盖普通房子</span>
+      CommonHouse commonHouse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CommonHouse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//准备准备创建房子的指挥者</span>
+      HouseDirector houseDirector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HouseDirector</span><span class="token punctuation">(</span>commonHouse<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">//完成盖房子，返回产品(普通房子)</span>
+      House house <span class="token operator">=</span> houseDirector<span class="token punctuation">.</span><span class="token function">constructHouse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>每个仓库的配置文件在隐藏目录.git下，<code>cat .git/config</code> 即可查看配置文件信息</li>
-<li>当前用户的配置文件，即所有仓库通用的配置文件，加了config参数进行配置的文件，是在用户主目录下的一个隐藏文件.gitconfig中，<code>cd</code>切换到主目录下，<code>cat .gitconfig</code> 查看全局配置文件</li>
 </ul>
+<h3 id="3-建造者模式注意事项"><a href="#3-建造者模式注意事项" class="headerlink" title="3. 建造者模式注意事项"></a>3. 建造者模式注意事项</h3><p>(1)    客户端(使用程序)<strong>不必知道产品内部组成的细节，将产品本身与产品的创建过程解耦，使得相同的创建过程可以创建不同的产品对象</strong>。<br>(2) 每一个具体建造者都相对独立，而与其他的具体建造者无关，因此可以很方便地替换具体建造者或增加新的具体建造者， <strong>用户使用不同的具体建造者即可得到不同的产品对象。</strong><br>(3) <strong>可以更加精细地控制产品的创建过程</strong>。将复杂产品的创建步骤分解在不同的方法中，使得创建过程更加清晰，也更方便使用程序来控制创建过程。<br>(4) <strong>增加新的具体建造者无须修改原有类库的代码，</strong> 指挥者类针对抽象建造者类编程，系统扩展方便，符合 <strong>“开闭原则”</strong>。<br>(5) 建造者模式所创建的产品一般具有较多的共同点，其组成部分相似，<font color="red">如果产品之间的差异性很大，则不适合使用建造者模式</font>，因此其使用范围受到一定的限制。<br>(6) 如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，导致系统变得很庞大，因此在这种情况下，要考虑是否选择建造者模式。<br>(7) <strong>抽象工厂模式VS建造者模式</strong>  抽象工厂模式实现对产品家族的创建，一个产品家族是这样的一系列产品：具有不同分类维度的产品组合，采用抽象工厂模式不需要关心构建过程，只关心什么产品由什么工厂生产即可。而建造者模式则是要求按照指定的蓝图建造产品，它的主要目的是通过组装零配件而产生一个新产品。</p>
+<h2 id="三-建造者模式在StringBuilder的应用"><a href="#三-建造者模式在StringBuilder的应用" class="headerlink" title="三. 建造者模式在StringBuilder的应用"></a>三. 建造者模式在StringBuilder的应用</h2><h3 id="1-类之间继承关系"><a href="#1-类之间继承关系" class="headerlink" title="1. 类之间继承关系"></a>1. 类之间继承关系</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">StringBuilder</span>
+    <span class="token keyword">extends</span> <span class="token class-name">AbstractStringBuilder</span>
+    <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable</span><span class="token punctuation">,</span> CharSequence
+
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">AbstractStringBuilder</span> <span class="token keyword">implements</span> <span class="token class-name">Appendable</span><span class="token punctuation">,</span> CharSequence<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="2-源码中建造者模式分析"><a href="#2-源码中建造者模式分析" class="headerlink" title="2. 源码中建造者模式分析"></a>2. 源码中建造者模式分析</h3><p>(1) Appendable 接口定义了多个append方法(抽象方法), 即Appendable 为抽象建  造者, 定义了抽象方法<br>(2) AbstractStringBuilder 实现了 Appendable 接口方法，这里的AbstractStringBuilder  已经是建造者，只是不能实例化<br>(3) StringBuilder 即充当了指挥者角色，同时充当了具体的建造者，建造方法的  实现是由 AbstractStringBuilder 完成, 而StringBuilder 继承了 AbstractStringBuilder</p>
 
             </div>
             <hr/>
@@ -585,7 +606,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.codezhuang.top/2020/01/02/git/git-chang-yong-ming-ling-zong-jie/">http://www.codezhuang.top/2020/01/02/git/git-chang-yong-ming-ling-zong-jie/</a>
+                    <a href="http://www.codezhuang.top/2020/05/21/she-ji-mo-shi/she-ji-mo-shi-4-jian-zao-zhe-mo-shi/">http://www.codezhuang.top/2020/05/21/she-ji-mo-shi/she-ji-mo-shi-4-jian-zao-zhe-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -623,8 +644,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
                                 </a>
                             
                         </div>
@@ -1050,53 +1075,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/07/jsp/jian-yao-xue-xi-jsp-yu-servlet/">
+                <a href="/2020/05/21/she-ji-mo-shi/she-ji-mo-shi-4-jian-zao-zhe-mo-shi/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_0.jpg" class="responsive-img" alt="JSP与Servlet基础">
+                        <img src="http://cdn.codezhuang.top/3_16.jpg" class="responsive-img" alt="设计模式(4)——建造者模式">
                         
-                        <span class="card-title">JSP与Servlet基础</span>
+                        <span class="card-title">设计模式(4)——建造者模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            最初的JavaWeb
+                            建造者模式总结
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JSP/" class="post-category">
-                                    JSP
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/JSP/">
-                        <span class="chip bg-color">JSP</span>
-                    </a>
                     
                     <a href="/tags/java/">
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/Servlet/">
-                        <span class="chip bg-color">Servlet</span>
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
                 </div>
@@ -1110,30 +1133,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/28/hexo/hexo-zhong-de-xiao-wen-ti/">
+                <a href="/2020/05/19/she-ji-mo-shi/she-ji-mo-shi-3-yuan-xing-mo-shi/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/2_3.jpg" class="responsive-img" alt="Hexo中的小问题">
+                        <img src="http://cdn.codezhuang.top/3_16.jpg" class="responsive-img" alt="设计模式(3)——原型模式">
                         
-                        <span class="card-title">Hexo中的小问题</span>
+                        <span class="card-title">设计模式(3)——原型模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hexo-Matery主题
+                            原型模式与深浅拷贝
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
                                 </a>
                             
                             
@@ -1143,12 +1166,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/Matery/">
-                        <span class="chip bg-color">Matery</span>
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
                 </div>
