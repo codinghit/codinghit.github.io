@@ -494,8 +494,6 @@
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//University 就是 Composite，可以管理College</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">University</span> <span class="token keyword">extends</span> <span class="token class-name">OrganizationComponent</span> <span class="token punctuation">{</span>
 
-  <span class="token keyword">protected</span>  <span class="token keyword">int</span> age<span class="token punctuation">;</span>
-
   List<span class="token operator">&lt;</span>OrganizationComponent<span class="token operator">></span> organizationComponents  <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token comment" spellcheck="true">//构造器</span>
@@ -524,7 +522,7 @@
           organizationComponent<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>学院(Composite):</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//学院可以管理系</span>
