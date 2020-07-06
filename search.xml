@@ -757,9 +757,9 @@
       
         <tags>
             
-            <tag> MyBatis </tag>
-            
             <tag> MyBatisPlus </tag>
+            
+            <tag> MyBatis </tag>
             
         </tags>
       
@@ -919,9 +919,9 @@
       
         <tags>
             
-            <tag> SpringBoot </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> SpringBoot </tag>
             
         </tags>
       
@@ -946,9 +946,9 @@
       
         <tags>
             
-            <tag> SpringBoot </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> SpringBoot </tag>
             
         </tags>
       
