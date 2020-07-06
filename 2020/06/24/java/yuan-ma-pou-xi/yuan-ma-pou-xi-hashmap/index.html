@@ -424,7 +424,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.4k
+                    5.5k
                 </div>
                 
 
@@ -448,7 +448,12 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="源码剖析——HashMap"><a href="#源码剖析——HashMap" class="headerlink" title="源码剖析——HashMap"></a>源码剖析——HashMap</h1><h2 id="一-HashMap"><a href="#一-HashMap" class="headerlink" title="一. HashMap"></a>一. HashMap</h2><h3 id="1-总结"><a href="#1-总结" class="headerlink" title="1. 总结"></a>1. 总结</h3><blockquote>
-<p>HashMap底层数据结构：哈希表结构(链表散列: 数组+链表)。<br>链表转红黑树条件: 当某个桶的节点数量大于8并且数组的长度大于64。<br>扩容的两种情况：①数组元素大于阈值thershold；②数组长度小于64时，且链表长度大于8时，会进行扩容，而不去转为红黑树。扩容为原来的两倍。</p>
+<ol>
+<li>HashMap底层数据结构：哈希表结构(链表散列: 数组+链表)。</li>
+<li>HashMap线程不安全，根据键的hashCode值存储数据，有很快的访问速度，但是遍历顺序不确定。最多允许一条记录的键为null，允许多条记录的值为null。</li>
+<li>链表转红黑树条件: 当某个桶的节点数量大于8并且数组的长度大于64。</li>
+<li>扩容的两种情况：①数组元素大于阈值thershold；②数组长度小于64时，且链表长度大于8时，会进行扩容，而不去转为红黑树。扩容为原来的两倍。</li>
+</ol>
 </blockquote>
 <h3 id="2-源码分析"><a href="#2-源码分析" class="headerlink" title="2. 源码分析"></a>2. 源码分析</h3><h4 id="2-1-Field"><a href="#2-1-Field" class="headerlink" title="2.1 Field"></a>2.1 Field</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//数组默认初始容量为16</span>
 <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> DEFAULT_INITIAL_CAPACITY <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// aka 16</span>
@@ -898,7 +903,7 @@
 <p><strong>（6）HashMap中put方法的过程？</strong><br>答：“调用哈希函数获取Key对应的hash值，再计算其数组下标；<br>如果没有出现哈希冲突，则直接放入数组；如果出现哈希冲突，则以链表的方式放在链表后面；<br>如果链表长度超过阀值( TREEIFY THRESHOLD==8)，就把链表转成红黑树，链表长度低于6，就把红黑树转回链表;<br>如果结点的key已经存在，则替换其value即可；<br>如果集合中的键值对大于12，调用resize方法进行数组扩容。”</p>
 <p><strong>（7）数组扩容的过程？</strong><br>创建一个新的数组，其容量为旧数组的两倍，并重新计算旧数组中结点的存储位置。结点在新数组中的位置只有两种，原下标位置或原下标+旧数组的大小。</p>
 <p><strong>（8）拉链法导致的链表过深问题为什么不用二叉查找树代替，而选择红黑树？为什么不一直使用红黑树？</strong><br>之所以选择红黑树是为了解决二叉查找树的缺陷，二叉查找树在特殊情况下会变成一条线性结构（这就跟原来使用链表结构一样了，造成很深的问题），遍历查找会非常慢。而红黑树在插入新数据后可能需要通过左旋，右旋、变色这些操作来保持平衡，引入红黑树就是为了查找数据快，解决链表查询深度的问题，我们知道红黑树属于平衡二叉树，但是为了保持“平衡”是需要付出代价的，但是该代价所损耗的资源要比遍历线性链表要少，所以当长度大于8的时候，会使用红黑树，如果链表长度很短的话，根本不需要引入红黑树，引入反而会慢。</p>
-<p><strong>（9）jdk8中对HashMap做了哪些改变？</strong><br>①在java 1.8中，如果链表的长度超过了8，那么链表将转换为红黑树。（桶的数量必须大于64，小于64的时候只会扩容）。<br>②发生hash碰撞时，java 1.7 会在链表的头部插入，而java 1.8会在链表的尾部插入。<br>③在java 1.8中，Entry被Node替代(换了一个马甲)。</p>
+<p><strong>（9）jdk8中对HashMap做了哪些改变？</strong><br>①在java 1.8中，如果链表的长度超过了8，那么链表将转换为红黑树。（桶的数量必须大于64，小于64的时候只会扩容）。<br>②发生hash碰撞时，java 1.7 会在链表的头部插入，而java 1.8会在链表的尾部插入。头插法在并发情况下，可能出现循环链表。<br>③在java 1.8中，Entry被Node替代(换了一个马甲)。</p>
 
             </div>
             <hr/>
@@ -1393,46 +1398,40 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/06/24/java/yuan-ma-pou-xi/yuan-ma-pou-xi-hashmap/">
+                <a href="/2020/07/05/netty/netty-ru-men/">
                     <div class="card-image">
                         
-                        <img src="http://cdn.codezhuang.top/3_19.jpeg" class="responsive-img" alt="源码剖析——HashMap">
+                        <img src="http://cdn.codezhuang.top/3_20.jpeg" class="responsive-img" alt="Netty入门">
                         
-                        <span class="card-title">源码剖析——HashMap</span>
+                        <span class="card-title">Netty入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            HashMap源码和相关面试题总结
+                            Netty相关知识总结
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-05
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category">
-                                    java
-                                </a>
-                            
-                            <a href="/categories/java/%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/" class="post-category">
-                                    源码剖析
+                            <a href="/categories/Netty/" class="post-category">
+                                    Netty
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1440,8 +1439,12 @@
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/%E6%BA%90%E7%A0%81/">
-                        <span class="chip bg-color">源码</span>
+                    <a href="/tags/NIO/">
+                        <span class="chip bg-color">NIO</span>
+                    </a>
+                    
+                    <a href="/tags/Netty/">
+                        <span class="chip bg-color">Netty</span>
                     </a>
                     
                 </div>
