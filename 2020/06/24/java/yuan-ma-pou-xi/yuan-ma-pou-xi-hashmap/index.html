@@ -452,7 +452,7 @@
 <li>HashMap底层数据结构：哈希表结构(链表散列: 数组+链表)。</li>
 <li>HashMap线程不安全，根据键的hashCode值存储数据，有很快的访问速度，但是遍历顺序不确定。最多允许一条记录的键为null，允许多条记录的值为null。</li>
 <li>链表转红黑树条件: 当某个桶的节点数量大于8并且数组的长度大于64。</li>
-<li>扩容的两种情况：①数组元素大于阈值thershold；②数组长度小于64时，且链表长度大于8时，会进行扩容，而不去转为红黑树。扩容为原来的两倍。</li>
+<li>扩容的两种情况：①数组元素大于阈值thershold；②数组长度小于64时，且链表长度大于8时，会进行扩容，而不去转为红黑树。扩容为原来的两倍。 </li>
 </ol>
 </blockquote>
 <h3 id="2-源码分析"><a href="#2-源码分析" class="headerlink" title="2. 源码分析"></a>2. 源码分析</h3><h4 id="2-1-Field"><a href="#2-1-Field" class="headerlink" title="2.1 Field"></a>2.1 Field</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//数组默认初始容量为16</span>
@@ -756,14 +756,14 @@
                          *  (e.hash &amp; oldCap) == 1
                          *  e.hash &amp; (oldCap - 1)  e.hash &amp; (newCap - 1)  e.hash &amp; oldCap
                          *  ...0101 0010            ...0101 0010           ...0101 0010
-                         * &amp;      0 1111                   1 1111                 1 0000
-                         *        0 0010                  1 0010                  1    0000
+                         * &amp;      0 1111                  1 1111                 1 0000
+                         *        0 0010                  1 0010                 1 0000
                          *
                          *     (e.hash &amp; oldCap) == 0
                          *  e.hash &amp; (oldCap - 1)  e.hash &amp; (newCap - 1)  e.hash &amp; oldCap
                          *  ...0100 0010            ...0100 0010           ...0100 0010
-                         * &amp;      0 1111                   1 1111                 1 0000
-                         *        0 0010                  0 0010                  0    0000
+                         * &amp;      0 1111                  1 1111                 1 0000
+                         *        0 0010                  0 0010                 0 0000
                          */</span>
                         <span class="token comment" spellcheck="true">// 总结：</span>
                         <span class="token comment" spellcheck="true">// 数组的长度为2^N，即高位为1，其余为0，计算e.hash &amp; oldCap只需看oldCap最高位1所对应的hash位</span>
