@@ -536,34 +536,38 @@ jdbc.password =</code></pre><pre class="line-numbers language-xml"><code class="
 <h3 id="2-settings设置"><a href="#2-settings设置" class="headerlink" title="2. settings设置"></a>2. settings设置</h3><ul>
 <li>settings包含很多重要的设置项，setting: 用来设置每一个设置项<ul>
 <li>name: 设置项名</li>
-<li>value: 设置项取值<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span><span class="token punctuation">></span></span>
-<span class="token comment" spellcheck="true">&lt;!-- 开启驼峰命令 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>setting</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mapUnderscoreToCamelCase<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-<span class="token comment" spellcheck="true">&lt;!-- 开启懒加载 --></span>
-&lt;setting name="lazyLoadingEnabled"value="true"/>
-&lt;setting name="aggressiveLazyLoading"value="false"/>
+<li>value: 设置项取值</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 开启驼峰命令 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>setting</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mapUnderscoreToCamelCase<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 开启懒加载 --></span>
+    &lt;setting name="lazyLoadingEnabled"value="true"/>
+    &lt;setting name="aggressiveLazyLoading"value="false"/>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-</ul>
 <h3 id="3-typeAliases别名处理器"><a href="#3-typeAliases别名处理器" class="headerlink" title="3. typeAliases别名处理器"></a>3. typeAliases别名处理器</h3><ul>
 <li>typeAliases：为某个java类型起别名<ul>
 <li>type: 指定要起别名的类型全类名；默认别名就是类名小写；employee</li>
-<li>alias: 指定别名<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typeAliases</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typeAlias</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.atguigu.mybatis.entity.Employee<span class="token punctuation">"</span></span> <span class="token attr-name">alias</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>emp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>typeAliases</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
+<li>alias: 指定别名</li>
 </ul>
 </li>
-<li>package：为某个包下的所有类批量取别名<ul>
-<li>name: 指定包名（为当前包以及下面所有的后代包的每一个类都起一个默认别名（类名小写））<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typeAliases</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.atguigu.mybatis.entity<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+</ul>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typeAliases</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typeAlias</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.atguigu.mybatis.entity.Employee<span class="token punctuation">"</span></span> <span class="token attr-name">alias</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>emp<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>typeAliases</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>package：为某个包下的所有类批量取别名</p>
+<ul>
+<li>name: 指定包名（为当前包以及下面所有的后代包的每一个类都起一个默认别名（类名小写））</li>
+</ul>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>typeAliases</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>package</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.atguigu.mybatis.entity<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>typeAliases</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
-</ul>
-</li>
-<li>使用@Alias注解为其指定一个别名<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Alias</span><span class="token punctuation">(</span><span class="token string">"emp"</span><span class="token punctuation">)</span>
+<li><p>使用@Alias注解为其指定一个别名</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Alias</span><span class="token punctuation">(</span><span class="token string">"emp"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Employee</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ul>
@@ -733,7 +737,7 @@ select * from tbl_employee where id = #{id}
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>did<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dept.id<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dept_name<span class="token punctuation">"</span></span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dept.departmentName<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resultMap</span><span class="token punctuation">></span></span>
-<span class="token comment" spellcheck="true">&lt;!--    Employee getEmpAndDept(Integer id); --></span>
+<span class="token comment" spellcheck="true">&lt;!-- Employee getEmpAndDept(Integer id); --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>getEmpAndDept<span class="token punctuation">"</span></span> <span class="token attr-name">resultMap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>MyDifEmp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
       select e.id id, e.last_name last_name, e.gender gender, e.email email, e.d_id d_id,
        d.id did, d.dept_name dept_name
@@ -779,10 +783,10 @@ select * from tbl_employee where id = #{id}
      流程：使用select指定的方法(传入column指定的这列参数的值)查出对象，并封装给property指定的属性
   --></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>association</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dept<span class="token punctuation">"</span></span> 
-  <span class="token attr-name">select</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.atguigu.mybatis.dao.DepartmentMapper.getDeptById<span class="token punctuation">"</span></span>
-  <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>d_id<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+              <span class="token attr-name">select</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.atguigu.mybatis.dao.DepartmentMapper.getDeptById<span class="token punctuation">"</span></span>
+              <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>d_id<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resultMap</span><span class="token punctuation">></span></span>
-<span class="token comment" spellcheck="true">&lt;!--Employee getEmpByIdStep(Integer id);--></span>
+<span class="token comment" spellcheck="true">&lt;!-- Employee getEmpByIdStep(Integer id);--></span>
 &lt;select id="getEmpByIdStep"resultMap="MyEmpDis">
   select * from tbl_employee where id = #{id}
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1111,11 +1115,29 @@ select * from tbl_employee
 </li>
 <li>使用：<ol>
 <li>开启全局二级缓存配置 <code>&lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;</code></li>
-<li>去mapper.xml中配置使用二级缓存，添加这个标签<code>&lt;cache&gt;&lt;/cache&gt;</code>即可<br>```xml<br><cache eviction="LRU" flushinterval="60000" readonly="false" size="1024"></cache><br>&lt;!–<br>eviction:缓存的回收策略：<br>LRU - 最近最少使用<br>FIFO - 先进先出<br>SOFT - 软引用<br>WEAK - 弱引用<br>默认是LRU<br>flushInterval: 缓存刷新间隔<br>缓存多长时间清空一次，默认不清空，设置一个毫秒值<br>readOnly: 是否只读<br>true:只读：mybatis人为所有缓存中获取数据的操作都是只读操作，不会修改数据<br> mybatis为了加速获取速度，直接就会将数据在缓存中的引用交给用户。不安全，速度快<br>false: 非只读： mybatis觉得获取的数据可能会被修改。<pre><code> mybatis会利用序列化&amp;反序列化的技术克隆一份新的数据给你。安全，速度慢</code></pre>size: 缓存存放多少元素<br>type=””: 指定自定义缓存的全类名；<pre><code>     实现Cache接口即可</code></pre></li>
+<li>去mapper.xml中配置使用二级缓存，添加这个标签<code>&lt;cache&gt;&lt;/cache&gt;</code>即可</li>
 </ol>
 </li>
-<li>-&gt;<pre><code></code></pre></li>
 </ul>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>cache</span> <span class="token attr-name">eviction</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>LRU<span class="token punctuation">"</span></span> <span class="token attr-name">flushInterval</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>60000<span class="token punctuation">"</span></span> <span class="token attr-name">readOnly</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1024<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>cache</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!--
+ eviction:缓存的回收策略：
+    LRU - 最近最少使用
+    FIFO - 先进先出
+    SOFT - 软引用
+    WEAK - 弱引用
+    默认是LRU
+ flushInterval: 缓存刷新间隔
+    缓存多长时间清空一次，默认不清空，设置一个毫秒值
+ readOnly: 是否只读
+    true:只读：mybatis人为所有缓存中获取数据的操作都是只读操作，不会修改数据
+        mybatis为了加速获取速度，直接就会将数据在缓存中的引用交给用户。不安全，速度快
+     false: 非只读： mybatis觉得获取的数据可能会被修改。
+            mybatis会利用序列化&amp;反序列化的技术克隆一份新的数据给你。安全，速度慢
+  size: 缓存存放多少元素
+  type="": 指定自定义缓存的全类名；
+                实现Cache接口即可
+--></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-缓存相关属性"><a href="#3-缓存相关属性" class="headerlink" title="3. 缓存相关属性"></a>3. 缓存相关属性</h3><ul>
 <li>cacheEnabled = true ,false; 关闭缓存(二级缓存关闭)（一级缓存一直可用的）</li>
 <li>每个select标签都有useCache=”true”；false: 不使用缓存（一级缓存依然使用，二级缓存不适用）</li>
