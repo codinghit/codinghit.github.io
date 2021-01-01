@@ -416,7 +416,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    452
+                    556
                 </div>
                 
 
@@ -442,6 +442,7 @@
                 <h1 id="RBAC权限模型"><a href="#RBAC权限模型" class="headerlink" title="RBAC权限模型"></a>RBAC权限模型</h1><h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><ul>
 <li>权限管理，这是每个软件系统都会涉及到的，而且权限管理的需求本质往往都是一样，不同的角色拥有不同的权限，只要你充当了某个角色，你就拥有了相对应的功能。</li>
 <li><strong>RBAC（Role-Based Access Control，基于角色的访问控制）</strong>，就是用户通过角色与权限进行关联。简单地说，一个用户拥有若干角色，每一个角色拥有若干权限。这样，就构造成 <strong>“用户-角色-权限”</strong> 的授权模型。在这种模型中，用户与角色之间，角色与权限（功能）之间，一般都是多对多的关系。</li>
+<li><strong>权限表</strong>一般会采用树形结构，如果角色表中有上下级的关系也会采用树形结构。（<strong>用表来进行存储大多通过增加一个父字段，而在查询该表时，通过使用Map结构存储，其中key保存id，value保存对象实体，通过循环找到子对象，然后通过Map取得父对象进行设置即可</strong>）</li>
 </ul>
 <p><img src="/2020/12/29/rbac-quan-xian-mo-xing/rbac-quan-xian-mo-xing/RBAC.png" alt></p>
 <h2 id="2-RBAC模型"><a href="#2-RBAC模型" class="headerlink" title="2. RBAC模型"></a>2. RBAC模型</h2><h3 id="2-1-RBAC0级别"><a href="#2-1-RBAC0级别" class="headerlink" title="2.1 RBAC0级别"></a>2.1 RBAC0级别</h3><ul>
